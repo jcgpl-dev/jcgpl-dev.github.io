@@ -4,7 +4,7 @@ export const profile = {
   bio:      `I'm a <strong>Computer Science student</strong> specialising in
              <strong>Flutter cross-platform development</strong> and
              <strong>Firebase backend integration</strong>.<br><br>
-             I build production-ready mobile and web applications — from real-time
+             I build production-ready mobile and web applications from real-time
              <strong>QR-based systems</strong> and <strong>AES-encrypted data pipelines</strong>
              to full UI/UX implementation with neumorphic design systems.<br><br>
              Currently looking for opportunities in
