@@ -42,9 +42,6 @@
   filter: var(--svg-icon-filter, none);
 }
 
-.service-card:hover .service-icon-wrap {
-  transform: scale(1.05);
-}
 .service-title {
   font-family: var(--font-title);
   font-size: 1.5rem;
