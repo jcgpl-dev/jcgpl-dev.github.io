@@ -415,4 +415,26 @@ export const projects = [
     githubUrl:   null,
     liveUrl:     null,
   },
+   {
+    title:       'Storemate Figma Design',
+    description: 'A comprehensive UI/UX design for a modern retail and inventory management ecosystem, focusing on user workflows, clean data presentation, and intuitive navigation for a mobile application tailored to small business needs.',
+    image:        'assets/images/projects/figma_design_storemate/cover.png',
+    images:      [
+      'assets/images/projects/figma_design_storemate/cover.png',
+    ],
+    techStack:   [ 'Figma'],
+    githubUrl:   null,
+    liveUrl:     null,
+  },
+  {
+    title:       'CVMS Figma Design',
+    description: 'A high-fidelity dashboard and tracking system interface designed for a Cloud-based Vehicle Monitoring System (CVMS), emphasizing administrative control and accessible UX.',
+    image:        'assets/images/projects/figma_design_cvms/cover.png',
+    images:      [
+      'assets/images/projects/figma_design_cvms/cover.png', // Fixed directory typo here
+    ],
+    techStack:   [ 'Figma'],
+    githubUrl:   null,
+    liveUrl:     null,
+  },
 ];
