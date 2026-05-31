@@ -102,9 +102,9 @@
   position: relative;
   z-index: 7;
   /* Raised shadow */
-  box-shadow:
+  /* box-shadow:
     -8px -8px 16px var(--light-shadow),
-    8px 8px 16px var(--dark-shadow);
+    8px 8px 16px var(--dark-shadow); */
 }
 
 /* Inset shadow as its own layer (z-index: 6) */
@@ -116,8 +116,8 @@
   z-index: 7;
   pointer-events: none;
   box-shadow:
-    inset 5px 5px 10px var(--dark-shadow),
-    inset -10px -10px 20px var(--light-shadow);
+    inset 2px 2px 2px var(--dark-shadow),
+    inset -5px -5px 10px var(--light-shadow);
 }
 
 /* Glossy shimmer overlay (z-index: 999) */
@@ -142,7 +142,7 @@
   filter: blur(3px);
 
   /* DEFAULT STATE: Resting slightly off-center to the left */
-  transform: translateX(-20%) translateY(15%) rotate(-15deg);
+  transform: translateX(-24%) translateY(15%) rotate(-15deg);
   opacity: 1; /* Slightly softer ambient reflection while resting */
 
   /* Smoothly animates the slide out AND the slide back when unhovered */
