@@ -643,7 +643,6 @@ body.modal-open {
   object-fit: contain;
   display: block;
   margin-inline: auto;
-  border-radius: var(--radius-sm);
 }
 
 .modal-media-wrap img.is-animating.from-next {
