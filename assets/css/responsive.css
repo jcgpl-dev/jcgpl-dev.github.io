@@ -278,6 +278,10 @@
     -ms-hyphens: auto;
   }
 
+  .contact-social-card {
+    padding: 0px 0px;
+  }
+
   .contact-social-value {
     font-size: var(--text-sm);
   }
