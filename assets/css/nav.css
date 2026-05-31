@@ -190,7 +190,7 @@
 
 #theme-toggle {
   background: transparent;
-  border: 2px solid transparent;
+  border: 2px solid var(--btn-border);
   width: 42px;
   height: 42px;
   display: inline-flex;
