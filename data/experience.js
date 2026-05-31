@@ -6,7 +6,7 @@ export const experience = [
     location: "Katipunan, Philippines",
     image: "assets/images/experiences/practicum/practicum1.jpg",
     bullets: [
-      "Built mobile and desktop application.",
+      "Built flutter-based mobile and desktop application.",
       "Integrated Firebase Auth and Firestore for real-time data handling.",
       "Collaborated with the design team to implement pixel-perfect UI components.",
       "Participated in code reviews and agile sprint planning.",
