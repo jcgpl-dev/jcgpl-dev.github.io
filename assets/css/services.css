@@ -45,6 +45,11 @@
   background: var(--card-bg-dark, var(--accent-tint));
 }
 
+.service-card:hover .service-icon-wrap {
+  border-color: var(--card-accent);
+  transform: translateY(-4px) rotate(8deg);
+}
+
 .service-title {
   font-family: var(--font-title);
   font-size: 1.5rem;
