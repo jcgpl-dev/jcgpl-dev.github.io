@@ -75,7 +75,6 @@
   align-items: center;
   min-height: 38px;
   color: var(--foreground);
-  border-radius: var(--radius-sm);
   padding: 7px 10px;
   font-size: var(--text-sm);
   font-weight: 600;
@@ -85,7 +84,7 @@
 .footer-links a:hover,
 .footer-links a:focus-visible {
   color: var(--accent);
-  box-shadow: var(--shadow-inset-sm);
+  background: var(--surface);
 }
 
 .footer-social {
@@ -100,11 +99,8 @@
   min-height: 42px;
   color: var(--foreground);
   padding: 8px 12px;
-  border-radius: var(--radius-sm);
   background: var(--base);
-  box-shadow:
-    inset 3px 3px 3px var(--dark-shadow),
-    inset -3px -3px 3px var(--light-shadow);
+
   font-size: var(--text-sm);
   font-weight: 600;
   transition: var(--transition-fast);
@@ -113,19 +109,16 @@
 .footer-social a:hover,
 .footer-social a:focus-visible {
   color: var(--accent);
-  box-shadow: var(--shadow-inset-sm);
   transform: translateY(-1px);
 }
 
 .footer-social-icon {
   width: 32px;
   height: 32px;
-  border-radius: var(--radius-xs);
   display: grid;
   place-items: center;
   color: var(--accent);
   background: var(--base);
-  box-shadow: var(--shadow-raised-sm);
   flex: 0 0 auto;
 }
 
@@ -150,16 +143,15 @@
   justify-content: center;
   gap: 8px;
   min-height: 40px;
-  border-radius: var(--radius-sm);
   padding: 8px 14px;
   background: var(--base);
   color: var(--foreground);
-  box-shadow: var(--shadow-raised-sm);
   font-family: var(--font);
   font-size: var(--text-sm);
   font-weight: 700;
   cursor: pointer;
   transition: var(--transition-fast);
+  border: 1px solid var(--btn-border);
 }
 
 .footer-top-btn svg {
@@ -170,7 +162,7 @@
 .footer-top-btn:hover,
 .footer-top-btn:focus-visible {
   color: var(--accent);
-  box-shadow: var(--shadow-inset-sm);
+  border: 1px solid var(--accent);
 }
 
 .footer-top-btn:hover svg,

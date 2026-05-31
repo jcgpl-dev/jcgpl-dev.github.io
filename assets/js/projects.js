@@ -69,7 +69,7 @@ function renderLinks(project) {
 
 function renderTags(techStack = []) {
   if (!techStack.length) return "";
-  const tags = techStack.map(t => `<span class="tag">${t}</span>`).join("");
+  const tags = techStack.map(t => `<span class="tag">#${t}</span>`).join("");
   return `<div class="tag-row project-tags">${tags}</div>`;
 }
 

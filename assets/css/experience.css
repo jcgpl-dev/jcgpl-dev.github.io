@@ -25,10 +25,8 @@
   width: 100%;
   height: 100%;
   min-height: 280px;
-  border-radius: var(--radius-lg);
   overflow: hidden;
   padding: 10px;
-  transform: rotate(1deg) translateZ(0);
   transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
@@ -41,7 +39,6 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  border-radius: var(--radius-md);
   /* transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); */
 }
 
@@ -51,8 +48,6 @@
 
 .exp-content-col {
   background: var(--base);
-  border-radius: var(--radius-lg);
-  /* box-shadow: var(--shadow-raised); */
   padding: 22px 24px;
   display: flex;
   flex-direction: column;
@@ -60,40 +55,54 @@
 }
 
 .exp-role {
-  margin-top: 8px;
-  font-size: 18px;
+  font-family: var(
+    --font-title
+  ); /* Outfit breaks up sections with a premium aesthetic */
+  font-size: 18px; /* Keeps a clear title layout contrast */
   font-weight: 700;
-  color: var(--dark);
-  line-height: 1.3;
+  color: var(
+    --foreground
+  ); /* Replaced dead --dark variable with crisp foreground */
+  line-height: 1.2;
 }
 
 .exp-company {
-  margin-top: 6px;
+  margin-top: 4px;
   font-size: var(--text-body);
   font-weight: 600;
-  color: var(--accent);
+  color: var(--accent); /* Clean brand color pop */
 }
 
 .exp-location {
-  margin-top: 2px;
-  font-size: var(--text-sm);
-  color: var(--muted);
+  margin-top: 4px;
+  font-size: var(--text-xs); /* Dropped to XS to isolate secondary metadata */
+  font-weight: 500;
+  color: var(--muted); /* De-emphasized details */
+  text-transform: uppercase; /* Gives metadata a sharp, technical alignment */
+  letter-spacing: 0.05em;
 }
 
 .exp-bullets {
-  margin: 2px 0 0;
-  padding-left: 18px;
+  margin-top: 16px; /* Open up layout gaps to give the eyes breathing space */
+  padding-left: 16px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  list-style-type: disc;
+  gap: 10px; /* Even spacing structure for long text blocks */
+  list-style-type: square; /* Square markers fit a geometric "sharp UI" better than round dots */
 }
 
 .exp-bullets li {
-  color: var(--muted);
+  font-family: var(--font); /* Clean reading style using Inter */
   font-size: var(--text-body);
-  line-height: 1.65;
-  display: list-item;
+  line-height: 1.6;
+  color: var(
+    --foreground
+  ); /* Body copy should be main foreground color for readability */
+}
+
+/* Optional styling tweak to make bullet markers cleanly recede */
+.exp-bullets li::marker {
+  color: var(--muted);
 }
 
 .exp-bullets li::marker {

@@ -24,8 +24,6 @@
   align-items: center;
   gap: 12px;
   background: var(--base);
-  border-radius: var(--radius-md);
-  /* box-shadow: var(--shadow-raised-sm); */
   padding: 12px 14px;
   text-decoration: none;
   color: inherit;
@@ -33,7 +31,7 @@
 }
 
 .contact-social-card:hover {
-  box-shadow: var(--shadow-inset-sm);
+  background: var(--surface);
 }
 
 .contact-social-icon {
@@ -56,7 +54,7 @@
 }
 
 .contact-social-value {
-  color: var(--dark);
+  color: var(--foreground);
   font-size: var(--text-body);
   font-weight: 600;
   word-break: break-word;
@@ -65,7 +63,7 @@
 /* ── Contact form ───────────────────────────────────────────── */
 
 .contact-form {
-  border-radius: var(--radius-lg);
+  background: var(--surface);
   padding: 22px;
   display: flex;
   flex-direction: column;
@@ -89,11 +87,10 @@
 .contact-field input,
 .contact-field textarea {
   width: 100%;
-  border-radius: var(--radius-sm);
   padding: 12px 14px;
   background: var(--base);
   color: var(--foreground);
-
+  border: 2px solid var(--foreground);
   /* ── SAFARI & iOS FIXES ────────────────────────────────── */
   -webkit-appearance: none; /* Strips native iOS glass/bubble rendering */
   appearance: none; /* Modern standard reset */
@@ -101,18 +98,13 @@
   outline: none; /* Prevents default iOS blue focus ring */
   font-family: inherit; /* Forces iOS to use your web font instead of System UI */
   /* ──────────────────────────────────────────────────────── */
-
-  box-shadow:
-    inset 3px 3px 3px var(--dark-shadow),
-    inset -3px -3px 3px var(--light-shadow);
 }
 
 /* Style placeholders to look clean and muted */
 .contact-field input::placeholder,
 .contact-field textarea::placeholder {
-  color: var(--muted, #888888);
+  color: var(--muted);
   opacity: 0.6;
-  font-size: 14px;
 }
 
 .contact-field textarea {
@@ -122,8 +114,9 @@
 
 .contact-field input:focus,
 .contact-field textarea:focus {
-  outline: none;
-  border-color: rgba(108, 142, 191, 0.65);
+  background: var(--surface);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent);
 }
 
 @keyframes spin {

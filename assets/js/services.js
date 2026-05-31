@@ -6,11 +6,15 @@ export function initServices() {
   const servicesGrid = document.getElementById('services-grid');
   if (!servicesGrid) return;
 
-  servicesGrid.innerHTML = servicesData.map((service) => `
-    
-    <div class="service-card neu-raised">
+servicesGrid.innerHTML = servicesData.map((service) => `
+    <div class="service-card sharp-raised">
       <div class="service-icon-wrap">
-        <i class="${service.icon}" aria-hidden="true"></i>
+        <img 
+          src="./assets/images/svg/icons/${service.icon}" 
+          alt="${service.title} Icon" 
+          class="service-icon"
+          loading="lazy"
+        />
       </div>
       <h5 class="service-title">${service.title}</h5>
       <p class="service-description">${service.description}</p>
@@ -19,8 +23,6 @@ export function initServices() {
       </div>
     </div>
   `).join('');
-
-    initScrollReveal();
 }
 
 document.addEventListener('DOMContentLoaded', initServices);

@@ -6,7 +6,7 @@ export const profile = {
              <strong>Firebase backend integration</strong>.<br><br>
              I build production-ready mobile and web applications from real-time
              <strong>QR-based systems</strong> and <strong>AES-encrypted data pipelines</strong>
-             to full UI/UX implementation with neumorphic design systems.<br><br>
+             to full UI/UX implementation with sharpmorphic design systems.<br><br>
              Currently looking for opportunities in
              <strong>mobile development, system development, or UI-focused engineering roles</strong>
              where I can ship real products and grow with a team.`,

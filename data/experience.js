@@ -1,6 +1,6 @@
 export const experience = [
   {
-    role: "On-job-Training (OJT) ",
+    role: "On-Job-Training (OJT) ",
     company: "Jose Rizal Memorial State University - Katipunan Campus",
     period: "Jun 2025 - Aug 2025",
     location: "Katipunan, Philippines",

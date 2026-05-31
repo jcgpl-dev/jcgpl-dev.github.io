@@ -1,52 +1,49 @@
 :root {
-  /* Colors ─────────────────────────────────────────────── */
-  --base: #e0e5ec;
-  --light-shadow: #ffffff;
-  --dark-shadow: #a3b1c6;
-  --foreground: #31456a;
-  --accent: #6c8ebf;
-  --dark: #1e2f4d;
-  --muted: #4a5e7a;
-  --mid: #31456a;
-  --success: #4caf82;
-  --error: #e57373;
+  /* Colors */
+  --base: #f8fafc;
+  --surface: #ffffff;
+  --border: #e2e8f0;
+  --border-hover: #cbd5e1;
+  --foreground: #0f172a;
+  --muted: #64748b;
 
-  /* code blocks */
+  /* Accents & Brand */
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --accent-tint: #eff6ff;
+
+  /* Filled CTA Button */
+  --btn-filled-bg: var(--accent);
+  --btn-filled-text: #ffffff;
+  --btn-filled-hover: var(--accent-hover);
+  --btn-filled-border: transparent;
+
+  /* Statuses */
+  --success: #16a34a;
+  --error: #dc2626;
+
+  /* Code Blocks */
   --code-bg: #0f172a;
-  --code-text: #dbeafe;
+  --code-text: #f8fafc;
   --code-comment: #64748b;
   --code-keyword: #f472b6;
   --code-number: #fb923c;
   --code-function: #38bdf8;
 
-  /*btn border */
-  --btn-border: rgba(255, 255, 255, 0.25);
-  /* btn gradient */
-  --btn-gradient: linear-gradient(to bottom, #8ba8d4 0%, var(--accent) 100%);
+  /* Interactive Elements */
+  --btn-border: #e2e8f0;
+  --btn-bg: #ffffff;
+  --btn-text: #0f172a;
 
-  /* Neumorphic Shadows ──────────────────────────────────── */
-  --shadow-raised:
-    -6px -6px 18px var(--light-shadow), 6px 6px 18px var(--dark-shadow);
-
-  --shadow-raised-sm:
-    -4px -4px 10px var(--light-shadow), 4px 4px 10px var(--dark-shadow);
-
-  --shadow-raised-lg:
-    -12px -12px 30px var(--light-shadow), 12px 12px 30px var(--dark-shadow);
-
-  --shadow-inset:
-    4px 4px 10px var(--dark-shadow), -4px -4px 10px var(--light-shadow);
-  --shadow-inset-sm:
-    2px 2px 6px var(--dark-shadow), -2px -2px 6px var(--light-shadow);
-
-  /* Spacing ─────────────────────────────────────────────── */
+  /* Spacing */
   --padding-desktop: 200px;
   --padding-tablet: 48px;
   --padding-mobile: 20px;
   --section-gap: 80px;
 
-  /* Typography ──────────────────────────────────────────── */
+  /* Typography */
   --font: "Inter", sans-serif;
+  --font-title: "Outfit", sans-serif;
   --text-display: 42px;
   --text-heading: 32px;
   --text-subtitle: 13px;
@@ -54,72 +51,55 @@
   --text-sm: 12px;
   --text-xs: 11px;
 
-  /* Hero Title Font */
-  --font-title: "Outfit", sans-serif;
+  /* Transitions & Motion */
+  --transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-fast: 100ms;
+  --motion-base: 200ms;
+  --motion-slow: 400ms;
 
-  /* Border Radius ───────────────────────────────────────── */
-  --radius-xl: 24px;
-  --radius-lg: 20px;
-  --radius-md: 16px;
-  --radius-sm: 12px;
-  --radius-xs: 10px;
-  --radius-tag: 999px;
-  --radius-pill: 999px;
-
-  /* Transitions ─────────────────────────────────────────── */
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-fast: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
-  --motion-fast: 180ms;
-  --motion-base: 520ms;
-  --motion-slow: 900ms;
-
-  /* Nav ─────────────────────────────────────────────────── */
+  /* Nav */
   --nav-height: 68px;
-  /* scroll offset */
   --scroll-offset: calc(var(--nav-height));
 }
 
 /* ─── DARK MODE ─── */
 .dark-mode {
-  --base: #1d2533;
-  --light-shadow: #2f394a;
-  --dark-shadow: #0f1218;
-  --foreground: #cbd5e1;
-  --dark: #f8fafc;
+  /* Colors */
+  --base: #0b0f19;
+  --surface: #131c2e;
+  --border: #1e293b;
+  --border-hover: #334155;
+  --foreground: #f8fafc;
   --muted: #94a3b8;
-  --mid: #cbd5e1;
-  --accent: #8fb3e6;
 
-  /* code blocks */
-  --code-bg: #0f1218; /* Directly references the absolute deep value for isolation */
+  /* Accents & Brand */
+  --accent: #3b82f6;
+  --accent-hover: #60a5fa;
+  --accent-tint: rgba(59, 130, 246, 0.1);
+
+  /* Filled CTA Button */
+  --btn-filled-bg: var(--accent);
+  --btn-filled-text: #0b0f19;
+  --btn-filled-hover: var(--accent-hover);
+  --btn-filled-border: transparent;
+
+  /* Statuses */
+  --success: #22c55e;
+  --error: #ef4444;
+
+  /* Code Blocks */
+  --code-bg: #0b0f19;
   --code-text: #e2e8f0;
   --code-comment: #475569;
   --code-keyword: #f43f5e;
   --code-number: #f97316;
   --code-function: #0ea5e9;
 
-  /*btn border */
-  --btn-border: rgba(255, 255, 255, 0.027);
-  /* btn gradient */
-  --btn-gradient: linear-gradient(to bottom, var(--accent) 0%, #466799 100%);
-
-  /* ── Smooth Dark Neumorphic Shadows  ── */
-
-  --shadow-raised:
-    -5px -5px 14px rgba(255, 255, 255, 0.123), 5px 5px 14px rgba(0, 0, 0, 0.5);
-  --shadow-raised-sm:
-    -3px -3px 8px rgba(255, 255, 255, 0.123), 3px 3px 8px rgba(0, 0, 0, 0.45);
-  --shadow-raised-lg:
-    -10px -10px 24px rgba(255, 255, 255, 0.123),
-    10px 10px 24px rgba(0, 0, 0, 0.55);
-
-  --shadow-inset:
-    inset 3px 3px 8px rgba(0, 0, 0, 0.6),
-    inset -3px -3px 8px rgba(255, 255, 255, 0.153);
-
-  --shadow-inset-sm:
-    inset 2px 2px 5px rgba(0, 0, 0, 0.5),
-    inset -2px -2px 5px rgba(255, 255, 255, 0.153);
+  /* Interactive Elements */
+  --btn-border: #1e293b;
+  --btn-bg: #131c2e;
+  --btn-text: #f8fafc;
 }

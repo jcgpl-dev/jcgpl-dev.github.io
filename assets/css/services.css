@@ -7,9 +7,8 @@
 
 .service-card {
   padding: 2.2rem 1.8rem;
-  background-color: var(--base);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-raised);
+  background-color: var(--surface);
+
   color: var(--foreground);
   display: flex;
   flex-direction: column;
@@ -19,7 +18,6 @@
 
 .service-card:hover {
   transform: translateY(-5px);
-  box-shadow: var(--shadow-raised-lg);
 }
 
 .service-icon-wrap {
@@ -30,33 +28,22 @@
   width: 64px;
   height: 64px;
   margin-bottom: 1.75rem;
-  border-radius: var(--radius-sm);
 
-  background-color: var(--base);
-  box-shadow: var(--shadow-inset-sm);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: var(--accent-tint);
 
   transition: var(--transition);
 }
 
-.service-icon-wrap i {
-  font-size: 1.75rem;
+.service-icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
 
-  background: var(--btn-gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  filter: drop-shadow(0px 2px 4px rgba(108, 142, 191, 0.25));
-}
-
-.dark-mode .service-icon-wrap i {
-  filter: drop-shadow(0px 2px 8px rgba(143, 179, 230, 0.4));
+  filter: var(--svg-icon-filter, none);
 }
 
 .service-card:hover .service-icon-wrap {
   transform: scale(1.05);
-  box-shadow: var(--shadow-raised-sm);
 }
 .service-title {
   font-family: var(--font-title);

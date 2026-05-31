@@ -92,17 +92,13 @@
     line-height: 1.2;
   }
 
-  .hero-content .neu-divider {
+  .hero-content .sharp-divider {
     margin-left: auto;
     margin-right: auto;
   }
 
   .hero-description {
     max-width: 100%;
-  }
-
-  .avatar-inner::after {
-    display: none !important;
   }
 
   /* Avatar smaller */
@@ -157,10 +153,6 @@
     grid-template-columns: repeat(2, 1fr) !important;
   }
 
-  .skill-card {
-    background: transparent;
-  }
-
   .services-grid {
     grid-template-columns: 1fr !important;
     gap: 1.5rem;
@@ -190,10 +182,8 @@
     order: 2;
     padding: clamp(12px, 2.4vw, 18px);
 
-    /* 1. Allow the aside to expand naturally without a height restriction */
     max-height: none;
 
-    /* 2. Prevent the internal vertical scrollbar */
     overflow-y: visible;
   }
 

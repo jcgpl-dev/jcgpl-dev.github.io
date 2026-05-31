@@ -43,6 +43,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "Outfit";
+  src: url("../fonts/Outfit/Outfit-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: bold;
+}
+
 html {
   font-family: var(--font);
 }
@@ -87,27 +94,19 @@ body {
   margin-top: 10px;
 }
 
-/* Neu divider ─────────────────────────────────────────────── */
-.neu-divider {
+/* sharp divider ─────────────────────────────────────────────── */
+.sharp-divider {
   width: 48px;
   height: 3px;
-  border-radius: 2px;
   background: var(--accent);
   margin: 10px 0 8px;
-  box-shadow:
-    2px 2px 4px var(--dark-shadow),
-    -2px -2px 4px var(--light-shadow);
 }
 
-.neu-section-divider {
+.sharp-section-divider {
   width: 60px;
   height: 3px;
-  border-radius: 2px;
   background: var(--accent);
   margin: 10px 0 8px;
-  box-shadow:
-    2px 2px 4px var(--dark-shadow),
-    -2px -2px 4px var(--light-shadow);
 }
 
 /* Selection ───────────────────────────────────────────────── */
@@ -184,7 +183,7 @@ body {
 .exp-media,
 .inline-loader-wrap {
   position: relative;
-  background-color: #1a1a1a;
+  background-color: var(--surface);
   overflow: hidden;
 }
 

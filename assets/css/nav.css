@@ -3,7 +3,7 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--base);
+  background: var(--surface);
   border-bottom: 1px solid rgba(163, 177, 198, 0.25);
 }
 
@@ -14,6 +14,7 @@
   gap: 16px;
   min-height: var(--nav-height);
   padding: 0 var(--padding-desktop);
+  background: var(--surface);
 }
 
 /* ── Logo ────────────────────────────────────────────────────── */
@@ -23,15 +24,29 @@
   gap: 10px;
   cursor: pointer;
   text-decoration: none;
+  font-family: var(--font-title);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+
+  /* Bracket Color */
+  color: var(--accent);
+  transition: var(--transition-fast);
 }
-.nav-logo img {
-  height: 40px;
+
+/* Inside Tag Text Color */
+.nav-logo .logo-text {
+  color: var(--foreground);
+  transition: var(--transition-fast);
 }
-.nav-logo span {
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--dark);
-  letter-spacing: 0.5px;
+
+/* Hover State Effects */
+.nav-logo:hover {
+  color: var(--accent-hover);
+}
+
+.nav-logo:hover .logo-text {
+  color: var(--accent);
 }
 
 .nav-spacer {
@@ -51,15 +66,13 @@
   flex-direction: column;
   align-items: center;
   padding: 8px 16px;
-  border-radius: var(--radius-sm);
   font-size: var(--text-body);
   font-weight: 600;
   color: var(--muted);
   letter-spacing: 0.4px;
   cursor: pointer;
   transition: var(--transition-fast);
-  background: var(--base);
-  box-shadow: none;
+
   position: relative;
 }
 
@@ -68,7 +81,6 @@
   display: block;
   height: 2px;
   width: 0;
-  border-radius: 2px;
   background: var(--accent);
   transition: var(--transition-fast);
   margin-top: 3px;
@@ -77,7 +89,6 @@
 .nav-link:hover,
 .nav-link.active {
   color: var(--accent);
-  box-shadow: var(--shadow-inset);
 }
 .nav-link:hover::after,
 .nav-link.active::after {
@@ -89,9 +100,7 @@
   display: none;
   width: 42px;
   height: 42px;
-  border-radius: var(--radius-sm);
   background: var(--base);
-  box-shadow: var(--shadow-raised-sm);
   align-items: center;
   justify-content: center;
   cursor: pointer;
@@ -100,7 +109,6 @@
 }
 .nav-hamburger.open,
 .nav-hamburger:active {
-  box-shadow: var(--shadow-inset-sm);
 }
 
 .hamburger-icon {
@@ -114,7 +122,7 @@
   width: 20px;
   height: 2px;
   background: var(--foreground);
-  border-radius: 2px;
+
   transition: var(--transition-fast);
   transform-origin: center;
 }
@@ -151,7 +159,6 @@
   flex-direction: column;
   align-items: flex-start;
   padding: 12px 14px;
-  border-radius: var(--radius-sm);
   font-size: var(--text-body);
   font-weight: 600;
   color: var(--foreground);
@@ -165,14 +172,13 @@
   height: 2px;
   width: 0;
   background: var(--accent);
-  border-radius: 2px;
+
   transition: var(--transition-fast);
   margin-top: 4px;
 }
 .drawer-link:hover,
 .drawer-link.active {
   color: var(--accent);
-  box-shadow: var(--shadow-inset-sm);
 }
 .drawer-link:hover::after,
 .drawer-link.active::after {
@@ -181,30 +187,68 @@
 
 /* ── Theme Button Icon Controls ─────────────────────────── */
 
-/* 1. Default (Light Mode) Styling */
 #theme-toggle {
-  color: var(--foreground); /* Soft deep blue in light mode */
+  background: transparent;
+  border: 2px solid transparent;
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+  color: var(--foreground);
+
+  transition: var(--transition-fast);
+}
+
+/* Sharp UI Hover Mechanics */
+#theme-toggle:hover {
+  background: var(--surface);
+  border-color: var(--border);
+  color: var(--accent);
+}
+
+#theme-toggle:focus-visible {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
 }
 
 #theme-toggle .theme-icon-sun {
-  display: none !important; /* Hide sun by default */
+  display: none !important;
 }
 
 #theme-toggle .theme-icon-moon {
-  display: block !important; /* Show moon by default */
+  display: block !important;
+  font-size: 16px;
+  transition: transform var(--motion-fast) var(--ease-out-soft);
 }
 
-/* 2. Dark Mode Overrides */
+#theme-toggle:hover .theme-icon-moon {
+  transform: rotate(-12deg);
+}
+
 .dark-mode #theme-toggle {
-  color: var(
-    --accent
-  ); /* Makes the icon pop with your light blue accent in dark mode */
+  color: var(--muted);
+}
+
+.dark-mode #theme-toggle:hover {
+  background: var(--surface);
+  border-color: var(--border);
+  color: var(--accent);
 }
 
 .dark-mode #theme-toggle .theme-icon-moon {
-  display: none !important; /* Hide moon when dark mode is active */
+  display: none !important;
 }
 
 .dark-mode #theme-toggle .theme-icon-sun {
-  display: block !important; /* Show sun when dark mode is active */
+  display: block !important;
+  font-size: 16px;
+  transition: transform var(--motion-fast) var(--ease-out-soft);
+}
+
+.dark-mode #theme-toggle:hover .theme-icon-sun {
+  transform: rotate(20deg);
 }

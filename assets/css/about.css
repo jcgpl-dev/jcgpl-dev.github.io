@@ -55,9 +55,8 @@
   align-items: center;
   gap: 16px;
   padding: 14px 0;
-  border-radius: var(--radius-md);
   background: var(--base);
-  /* box-shadow: var(--shadow-raised-sm); */
+
   transition: var(--transition);
 }
 
@@ -107,7 +106,6 @@ a.detail-value:hover {
   justify-content: center;
   gap: 6px;
   padding: 18px 14px;
-  border-radius: var(--radius-md);
   text-align: center;
 }
 
@@ -151,9 +149,7 @@ a.detail-value:hover {
   width: 14px;
   height: 14px;
   margin-top: 4px;
-  border-radius: 50%;
   background: var(--base);
-  box-shadow: var(--shadow-inset-sm);
   position: relative;
   flex-shrink: 0;
 }
@@ -162,7 +158,6 @@ a.detail-value:hover {
   content: "";
   position: absolute;
   inset: 4px;
-  border-radius: 50%;
   background: var(--accent);
 }
 
@@ -170,7 +165,6 @@ a.detail-value:hover {
   flex: 1;
   width: 2px;
   margin: 4px 0;
-  border-radius: 2px;
   background: rgba(163, 177, 198, 0.45);
 }
 
@@ -189,7 +183,6 @@ a.detail-value:hover {
   gap: 14px;
   align-items: flex-start;
 
-  border-radius: var(--radius-md);
   background: var(--base);
 }
 
@@ -204,7 +197,6 @@ a.detail-value:hover {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  border-radius: var(--radius-xs);
 }
 
 .timeline-body {

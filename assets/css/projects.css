@@ -11,24 +11,18 @@
 .project-card {
   display: flex;
   flex-direction: column;
-  background: var(--base);
-  border-radius: var(--radius-xs);
-  box-shadow: var(--shadow-raised);
+  background: var(--surface);
+
   overflow: hidden;
   transition: var(--transition);
 }
 
-/* .project-card:hover {
-  box-shadow: var(--shadow-raised-lg);
-} */
-
 .project-image-wrap {
   position: relative;
-  border-radius: var(--radius-sm);
   /* margin: 10px; */
   aspect-ratio: 16 / 8;
-  background: var(--light-shadow);
-  /* box-shadow: var(--shadow-inset); */
+  background: var(--surface);
+
   overflow: hidden;
   cursor: pointer;
 }
@@ -39,15 +33,12 @@
   right: 10px;
   width: 34px;
   height: 34px;
-  border-radius: 999px;
   border: 1.8px solid var(--base);
   background: var(--base);
   color: var(--foreground);
   display: grid;
   place-items: center;
-  box-shadow:
-    inset 3px 3px 3px var(--dark-shadow),
-    inset -3px -3px 3px var(--light-shadow);
+
   z-index: 999;
   text-decoration: none;
   transition: var(--transition-fast);
@@ -55,11 +46,9 @@
 
 .project-view-btn:hover {
   color: var(--accent);
-  box-shadow: var(--shadow-inset-sm);
 }
 
 .project-view-btn:active {
-  box-shadow: var(--shadow-inset);
 }
 
 .project-view-btn svg {
@@ -134,20 +123,11 @@
   flex: 0 0 auto;
 }
 
-.github-heatmap-frame {
-  border-radius: var(--radius-xs);
-  background: var(--base);
-  box-shadow: var(--shadow-inset);
-  padding: clamp(10px, 2vw, 18px);
-  overflow: hidden;
-}
-
 .github-heatmap-frame img {
   display: block;
   width: 100%;
   max-width: 100%;
   height: auto;
-  border-radius: var(--radius-xs);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -179,21 +159,12 @@
 
 /* ── GitHub Heatmap Container Adjustments ───────────────── */
 .github-heatmap-frame {
-  background: var(--base);
-  border-radius: var(--radius-md);
+  background: var(--surface);
   padding: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: var(--transition);
-}
-
-/* Give the image a soft neumorphic inset container or subtle isolation */
-.dark-mode .github-heatmap-frame {
-  background: var(
-    --code-bg
-  ); /* Use your ultra-dark slate frame for background isolation */
-  box-shadow: var(--shadow-inset-sm);
 }
 
 .github-heatmap-frame img {

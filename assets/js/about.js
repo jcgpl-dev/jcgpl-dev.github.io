@@ -87,7 +87,7 @@ function renderStats() {
   root.innerHTML = stats
     .map(
       s => `
-      <div class="stat-card neu-raised">
+      <div class="stat-card sharp-raised">
         <span class="stat-count">${s.count}</span>
         <span class="stat-label">${s.label}</span>
       </div>
