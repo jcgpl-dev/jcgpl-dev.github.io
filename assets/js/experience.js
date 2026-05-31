@@ -40,7 +40,11 @@ function renderExperience() {
     `
     )
     .join("");
+
+
+  if (typeof window.monitorImageLoading === "function") {
+    window.monitorImageLoading(root);
+  }
 }
 
 renderExperience();
-

@@ -110,7 +110,6 @@ body {
     -2px -2px 4px var(--light-shadow);
 }
 
-/* 
 /* Selection ───────────────────────────────────────────────── */
 ::selection {
   background: var(--accent);
@@ -142,15 +141,13 @@ body {
 
 /* Custom logo sizing and breathing animation */
 .loader-logo {
-  height: 65px; /* Sized slightly larger than your 40px nav logo for visibility */
+  height: 65px;
   width: auto;
   user-select: none;
   pointer-events: none;
-  /* Smooth breathing animation: combines subtle scaling and soft opacity shifts */
   animation: logoBreath 2s ease-in-out infinite;
 }
 
-/* Keyframes for the high-end breathing effect */
 @keyframes logoBreath {
   0%,
   100% {
@@ -163,6 +160,18 @@ body {
   }
 }
 
+@keyframes inlineLogoBreath {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(0.95);
+    opacity: 0.65;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.05);
+    opacity: 1;
+  }
+}
+
 /* Class applied via JS to gracefully exit the loader screen */
 .loader-overlay.fade-out {
   opacity: 0;
@@ -171,33 +180,46 @@ body {
 
 /* --- INLINE IMAGE WRAPPER LOADER --- */
 .project-image-wrap,
-.modal-media-wrap {
+.modal-media-wrap,
+.exp-media,
+.inline-loader-wrap {
   position: relative;
-  background-color: #1a1a1a; /* Match card backgrounds */
+  background-color: #1a1a1a;
   overflow: hidden;
 }
 
 /* Before pseudo-element acts as the centered breathing logo loader background */
 .project-image-wrap::before,
-.modal-media-wrap::before {
+.modal-media-wrap::before,
+.inline-loader-wrap::before,
+.exp-media::before {
   content: "";
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 60px; /* Sized beautifully for cards and modules */
-  height: 60px;
+  width: 65px;
+  height: 65px;
+
+  /* Safe fallback property values */
   transform: translate(-50%, -50%);
   background: url("../images/svg/logo.svg") no-repeat center/contain;
   z-index: 1;
   pointer-events: none;
-  animation: logoBreath 2s ease-in-out infinite;
+  animation: inlineLogoBreath 2s ease-in-out infinite;
   transition: opacity 0.3s ease;
 }
 
 /* Initially hide images while they are downloading */
 .project-image-wrap img,
-.modal-media-wrap img {
+.modal-media-wrap img,
+.inline-loader-wrap img,
+.exp-media img,
+.exp-media.inline-loader-wrap img {
   opacity: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   transition: opacity 0.35s ease-in-out;
   position: relative;
   z-index: 2;
@@ -205,17 +227,23 @@ body {
 
 /* When the image fully loads, fade it in and hide the breathing placeholder background */
 .project-image-wrap.img-loaded::before,
-.modal-media-wrap.img-loaded::before {
+.modal-media-wrap.img-loaded::before,
+.inline-loader-wrap.img-loaded::before,
+.exp-media.img-loaded::before,
+.exp-media.inline-loader-wrap.img-loaded::before {
   opacity: 0;
 }
 
 .project-image-wrap.img-loaded img,
 .modal-media-wrap.img-loaded img,
-.github-heatmap-frame.img-loaded img {
+.inline-loader-wrap.img-loaded img,
+.exp-media.img-loaded img,
+.github-heatmap-frame.img-loaded img,
+.exp-media.inline-loader-wrap.img-loaded img {
   opacity: 1;
 }
 
 .project-image-wrap .project-view-btn {
   position: absolute;
-  z-index: 10; /* Higher than the image's z-index of 2 */
+  z-index: 10;
 }
