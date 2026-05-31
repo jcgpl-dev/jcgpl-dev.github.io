@@ -436,7 +436,7 @@ body.modal-open {
 }
 
 .modal-note {
-  background: var(--surface);
+  background: var(--base);
   padding: 14px;
 }
 
