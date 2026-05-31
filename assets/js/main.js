@@ -1,4 +1,4 @@
-// Core Page Boot Loader Event
+
 window.addEventListener('load', () => {
   const loader = document.getElementById('page-loader');
   const mainContent = document.getElementById('main-content');
@@ -15,11 +15,9 @@ window.addEventListener('load', () => {
   }
 });
 
-/**
- * Dynamic Branded Image Loader Engine
- */
+
 export function monitorImageLoading(container = document.body) {
-  // Balanced selector matching all global portfolio sections (projects, heatmaps, experiences, etc.)
+  
   const images = container.querySelectorAll(
     '.inline-loader-wrap img, .project-image-wrap img, .modal-media-wrap img'
   );

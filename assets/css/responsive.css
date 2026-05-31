@@ -23,6 +23,11 @@
   .skills-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
+
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.5rem;
+  }
 }
 
 /* ── Mobile ───────────────────────────────────────────────────── */
@@ -154,6 +159,19 @@
 
   .skill-card {
     background: transparent;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .service-description {
+    font-size: var(--text-sm);
   }
 
   .project-title {

@@ -10,6 +10,7 @@ const revealSelectors = [
   ".contact-info-col > *",
   ".contact-form-col",
   ".footer",
+  ".services-grid > *",
 ];
 
 const staggerContainers = [
@@ -18,6 +19,7 @@ const staggerContainers = [
   ".projects-grid",
   ".experience-list",
   ".contact-social-list",
+  ".services-grid" 
 ];
 
 function setRevealDelays() {
@@ -36,7 +38,7 @@ function getRevealElements() {
   return [...document.querySelectorAll(revealSelectors.join(","))];
 }
 
-function initScrollReveal() {
+export function initScrollReveal() {
   const prefersReducedMotion =
     window.matchMedia &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
