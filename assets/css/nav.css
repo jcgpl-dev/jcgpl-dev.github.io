@@ -11,7 +11,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  /* gap: 16px; */
   min-height: var(--nav-height);
   padding: 0 var(--padding-desktop);
   background: var(--surface);
@@ -207,7 +207,7 @@
 /* Sharp UI Hover Mechanics */
 #theme-toggle:hover {
   background: var(--surface);
-  border-color: var(--border);
+  border-color: var(--accent);
   color: var(--accent);
 }
 

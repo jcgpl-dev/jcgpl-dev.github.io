@@ -39,6 +39,10 @@
     --section-gap: 48px;
   }
 
+  #theme-toggle {
+    margin-right: 14px;
+  }
+
   #top-nav {
     padding: 0 var(--padding-mobile);
   }
