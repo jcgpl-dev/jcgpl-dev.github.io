@@ -283,7 +283,7 @@ body.modal-open {
   color: var(--foreground);
   display: grid;
   place-items: center;
-
+  z-index: 9999;
   cursor: pointer;
   transition: var(--transition-fast);
 }
