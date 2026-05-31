@@ -21,25 +21,28 @@
 }
 
 .service-icon-wrap {
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  width: 64px;
-  height: 64px;
-  margin-bottom: 1.75rem;
-
-  background-color: var(--accent-tint);
-
-  transition: var(--transition);
+  margin-bottom: 16px;
+  transition: var(--transition-fast);
+  background: var(--card-bg, var(--accent-tint));
 }
 
-.service-icon {
-  width: 28px;
-  height: 28px;
-  object-fit: contain;
+.service-icon-wrap svg {
+  width: 22px;
+  height: 22px;
+}
 
-  filter: var(--svg-icon-filter, none);
+.service-icon-wrap svg path {
+  fill: var(--card-accent, var(--accent));
+  transition: var(--transition-fast);
+}
+
+.dark-mode .service-icon-wrap {
+  background: var(--card-bg-dark, var(--accent-tint));
 }
 
 .service-title {

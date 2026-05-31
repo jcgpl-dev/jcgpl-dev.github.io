@@ -18,6 +18,9 @@
   --btn-filled-hover: var(--accent-hover);
   --btn-filled-border: transparent;
 
+  /* colors */
+  --accent-green: #16a34a;
+
   /* Statuses */
   --success: #16a34a;
   --error: #dc2626;
@@ -74,6 +77,8 @@
   --border-hover: #334155;
   --foreground: #f8fafc;
   --muted: #94a3b8;
+  /* colors */
+  --accent-green: #22c55e;
 
   /* Accents & Brand */
   --accent: #3b82f6;
