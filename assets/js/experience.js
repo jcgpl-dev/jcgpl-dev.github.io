@@ -22,7 +22,7 @@ function renderExperience() {
       item => `
       <article class="exp-row" role="listitem">
         <div class="exp-media-col">
-          <div class="exp-media neu-inset">
+          <div class="exp-media neu-inset inline-loader-wrap">
             <img src="./${item.image}" alt="${item.role}" loading="lazy" />
           </div>
         </div>

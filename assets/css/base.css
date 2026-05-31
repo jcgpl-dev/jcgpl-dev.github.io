@@ -168,3 +168,54 @@ body {
   opacity: 0;
   visibility: hidden;
 }
+
+/* --- INLINE IMAGE WRAPPER LOADER --- */
+.project-image-wrap,
+.modal-media-wrap {
+  position: relative;
+  background-color: #1a1a1a; /* Match card backgrounds */
+  overflow: hidden;
+}
+
+/* Before pseudo-element acts as the centered breathing logo loader background */
+.project-image-wrap::before,
+.modal-media-wrap::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60px; /* Sized beautifully for cards and modules */
+  height: 60px;
+  transform: translate(-50%, -50%);
+  background: url("../images/svg/logo.svg") no-repeat center/contain;
+  z-index: 1;
+  pointer-events: none;
+  animation: logoBreath 2s ease-in-out infinite;
+  transition: opacity 0.3s ease;
+}
+
+/* Initially hide images while they are downloading */
+.project-image-wrap img,
+.modal-media-wrap img {
+  opacity: 0;
+  transition: opacity 0.35s ease-in-out;
+  position: relative;
+  z-index: 2;
+}
+
+/* When the image fully loads, fade it in and hide the breathing placeholder background */
+.project-image-wrap.img-loaded::before,
+.modal-media-wrap.img-loaded::before {
+  opacity: 0;
+}
+
+.project-image-wrap.img-loaded img,
+.modal-media-wrap.img-loaded img,
+.github-heatmap-frame.img-loaded img {
+  opacity: 1;
+}
+
+.project-image-wrap .project-view-btn {
+  position: absolute;
+  z-index: 10; /* Higher than the image's z-index of 2 */
+}

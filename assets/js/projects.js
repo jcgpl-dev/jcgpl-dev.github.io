@@ -139,6 +139,13 @@ function renderProjects() {
     `
     )
     .join("");
+  
+  // monitor newly injected grid items
+  if (typeof monitorImageLoading === 'function') {
+    monitorImageLoading(grid);
+  } else if (window.monitorImageLoading) {
+    window.monitorImageLoading(grid);
+  }
 }
 
 function setupProjectModal() {
@@ -399,6 +406,13 @@ const renderCodeSnippet = codeSnippet => {
       : "Project full preview";
     if (animate) animateImageChange(direction);
     updateNavState();
+
+    // trigger the logo loader whenever a user hits Next/Prev
+    const mediaWrap = modalImage.parentElement;
+    if (mediaWrap) {
+      mediaWrap.classList.remove('img-loaded');
+      if (typeof monitorImageLoading === 'function') monitorImageLoading(mediaWrap);
+    }
   };
 
   const openModal = ({ projectIndex, trigger }) => {
@@ -477,10 +491,6 @@ const renderCodeSnippet = codeSnippet => {
     if (e.key === "ArrowLeft") goPrev();
   });
 }
-
-
-
-
 
 renderProjects();
 setupProjectModal();

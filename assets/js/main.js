@@ -1,53 +1,57 @@
-// Rotating hero role text
-(() => {
-  const el = document.querySelector(".hero-role .role-text");
-  if (!el) return;
-
-  const prefersReducedMotion =
-    window.matchMedia &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  const roles = ["FLUTTER DEVELOPER", "GRAPHIC DESIGNER"];
-  let idx = roles.indexOf(el.textContent?.trim() || "");
-  if (idx < 0) idx = 0;
-
-  // If reduced motion, just swap text without fades.
-  const intervalMs = prefersReducedMotion ? 2500 : 2800;
-  const fadeMs = 220;
-
-  window.setInterval(() => {
-    idx = (idx + 1) % roles.length;
-
-    if (prefersReducedMotion) {
-      el.textContent = roles[idx];
-      return;
-    }
-
-    el.classList.remove("fade-in");
-    el.classList.add("fade-out");
-
-    window.setTimeout(() => {
-      el.textContent = roles[idx];
-      el.classList.remove("fade-out");
-      el.classList.add("fade-in");
-    }, fadeMs);
-  }, intervalMs);
-})();
-
+// Core Page Boot Loader Event
 window.addEventListener('load', () => {
   const loader = document.getElementById('page-loader');
   const mainContent = document.getElementById('main-content');
 
-  // Fade out the loader
-  loader.classList.add('fade-out');
+  if (loader) {
+    loader.classList.add('fade-out');
+    if (mainContent) {
+      mainContent.style.opacity = '1';
+    }
 
-  // Make the main content visible smoothly
-  if (mainContent) {
-    mainContent.style.opacity = '1';
+    loader.addEventListener('transitionend', () => {
+      loader.remove();
+    }, { once: true }); 
   }
-
-  // Completely remove loader from DOM after transition finishes
-  loader.addEventListener('transitionend', () => {
-    loader.remove();
-  });
 });
+
+/**
+ * Dynamic Branded Image Loader Engine
+ * Monitors image elements and handles cross-fading loading states.
+ * Supports any custom layouts using our utility classes.
+ */
+export function monitorImageLoading(container = document.body) {
+  // Balanced selector matching all global portfolio sections (projects, heatmaps, experiences, etc.)
+  const images = container.querySelectorAll(
+    '.inline-loader-wrap img, .project-image-wrap img, .modal-media-wrap img'
+  );
+
+  images.forEach(img => {
+    const parent = img.parentElement;
+    if (!parent) return;
+
+    // Clear loading state triggers if re-used during async rendering cycles
+    parent.classList.remove('img-loaded');
+
+    // Check caching status: If asset is ready in browser cache, immediately mount layout
+    if (img.complete) {
+      parent.classList.add('img-loaded');
+    } else {
+      // Otherwise, wire network interception events cleanly
+      img.addEventListener('load', () => {
+        parent.classList.add('img-loaded');
+      }, { once: true });
+      
+      img.addEventListener('error', () => {
+        // Fallback safety layer: ensures broken links don't trap layout with infinite spinners
+        parent.classList.add('img-loaded'); 
+      }, { once: true });
+    }
+  });
+}
+
+
+window.monitorImageLoading = monitorImageLoading;
+
+
+monitorImageLoading();

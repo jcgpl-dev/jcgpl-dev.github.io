@@ -48,7 +48,7 @@
   box-shadow:
     inset 3px 3px 3px var(--dark-shadow),
     inset -3px -3px 3px var(--light-shadow);
-  z-index: 2;
+  z-index: 999;
   text-decoration: none;
   transition: var(--transition-fast);
 }
