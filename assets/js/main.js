@@ -15,6 +15,10 @@ window.addEventListener('load', () => {
   }
 });
 
+document.addEventListener('contextmenu', (event) => {
+  event.preventDefault();
+});
+
 
 export function monitorImageLoading(container = document.body) {
   
