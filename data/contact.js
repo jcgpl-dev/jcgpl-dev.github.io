@@ -18,8 +18,8 @@ export const contactData = {
     },
     {
       label: "GitHub",
-      value: "github.com/bhugthicc2",
-      href: "https://github.com/bhugthicc2",
+      value: "github.com/jcgpl-dev",
+      href: "https://github.com/jcgpl-dev",
       icon: "github",
     },
     {
