@@ -62,8 +62,6 @@
   --motion-fast: 100ms;
   --motion-base: 200ms;
   --motion-slow: 400ms;
-
-  /* Nav */
   --nav-height: 68px;
   --scroll-offset: calc(var(--nav-height));
 }
