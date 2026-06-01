@@ -15,7 +15,7 @@ export const profile = {
   cv:       'assets/cv/jesie_gapol_cv.pdf',
   social: [
     { label: 'Email',    value: 'gapoljesie23@gmail.com',              url: 'mailto:gapoljesie23@gmail.com',              icon: 'fas fa-envelope',  color: '#6C8EBF' },
-    { label: 'GitHub',   value: 'github.com/bhugthicc2',    url: 'https://github.com/bhugthicc2',   icon: 'fab fa-github',    color: '#181717' },
+    { label: 'GitHub',   value: 'github.com/jcgpl-dev',    url: 'https://github.com/jcgpl-dev',   icon: 'fab fa-github',    color: '#181717' },
     { label: 'Facebook', value: 'facebook.com/jesieperasgapol',   url: 'https://facebook.com/jesieperasgapol',  icon: 'fab fa-facebook',  color: '#1877F2' },
   ],
 };
