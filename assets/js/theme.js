@@ -1,5 +1,10 @@
-// assets/js/theme.js
 
+import {
+  playForward,
+  playBackward,
+  setDarkFrame,
+  setLightFrame,
+} from './avatar.js';
 const toggleBtn = document.getElementById('theme-toggle');
 const body = document.body;
 const heatmapImg = document.getElementById('github-heatmap-img');
@@ -21,24 +26,26 @@ const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matc
 
 if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
   body.classList.add('dark-mode');
+  setDarkFrame();
+} else {
+  setLightFrame();
 }
 
 
 updateHeatmap();
 
-// 2. Toggle theme on button click
 if (toggleBtn) {
   toggleBtn.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    
-    // Save preference to localStorage
-    if (body.classList.contains('dark-mode')) {
+    const isDark = body.classList.toggle('dark-mode');
+
+    if (isDark) {
       localStorage.setItem('theme', 'dark');
+      playForward();
     } else {
       localStorage.setItem('theme', 'light');
+      playBackward();
     }
-    
-    // Swap the heatmap color style
+
     updateHeatmap();
   });
 }
