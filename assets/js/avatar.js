@@ -1,12 +1,12 @@
 const TOTAL_FRAMES = 142;
-const FRAME_PATH = "./assets/images/profile_frames";
+const FRAME_PATH = "./assets/images/profile_frames_webp";
 
 const avatar = document.getElementById("profile-avatar");
 
 let isAnimating = false;
 
 function getFrame(frame) {
-  return `${FRAME_PATH}/frame-${String(frame).padStart(3, "0")}.png`;
+  return `${FRAME_PATH}/frame-${String(frame).padStart(3, "0")}.webp`;
 }
 
 // preload
