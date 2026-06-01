@@ -373,7 +373,7 @@ export const projects = [
   'assets/images/projects/store_mate/date_picker.png',
 ],
     techStack:   ['Kotlin', 'XML', 'Firebase'],
-    githubUrl:   'https://github.com/bhugthicc2/StoreMate',
+    githubUrl:   'https://github.com/jcgpl-dev/StoreMate',
     liveUrl:     null,
   },
 
