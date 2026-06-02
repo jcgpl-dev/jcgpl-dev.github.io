@@ -1,63 +1,82 @@
 const TOTAL_FRAMES = 142;
 const FRAME_PATH = "./assets/images/profile_frames_webp";
-
 const avatar = document.getElementById("profile-avatar");
 
-let isAnimating = false;
+let currentFrame = 1; 
+let animationFrameId = null;
 
-function getFrame(frame) {
+function getFramePath(frame) {
   return `${FRAME_PATH}/frame-${String(frame).padStart(3, "0")}.webp`;
 }
 
-// preload
-for (let i = 1; i <= TOTAL_FRAMES; i++) {
-  const img = new Image();
-  img.src = getFrame(i);
+
+const preloadedImages = [];
+function preloadFrames() {
+  for (let i = 1; i <= TOTAL_FRAMES; i++) {
+    const img = new Image();
+    img.src = getFramePath(i);
+    preloadedImages[i] = img;
+  }
 }
 
-function playFrames(start, end) {
-  if (!avatar || isAnimating) return;
+if (document.readyState === "complete") {
+  preloadFrames();
+} else {
+  window.addEventListener("load", preloadFrames);
+}
 
-  isAnimating = true;
 
-  const duration = (Math.abs(end - start) / 30) * 1000;
+function animateTo(targetFrame) {
 
+  if (animationFrameId) {
+    cancelAnimationFrame(animationFrameId);
+  }
+
+  if (currentFrame === targetFrame) return;
+
+  const startFrame = currentFrame;
+  const frameDistance = Math.abs(targetFrame - startFrame);
+  
+
+  const duration = (frameDistance / 30) * 1000; 
   const startTime = performance.now();
 
-  function animate(now) {
-    const progress = Math.min(
-      (now - startTime) / duration,
-      1
-    );
+  function render(now) {
+    const progress = Math.min((now - startTime) / duration, 1);
+    
 
-    const frame = Math.round(
-      start + (end - start) * progress
-    );
+    currentFrame = Math.round(startFrame + (targetFrame - startFrame) * progress);
 
-    avatar.src = getFrame(frame);
+
+    if (avatar) {
+      avatar.src = preloadedImages[currentFrame] ? preloadedImages[currentFrame].src : getFramePath(currentFrame);
+    }
 
     if (progress < 1) {
-      requestAnimationFrame(animate);
+      animationFrameId = requestAnimationFrame(render);
     } else {
-      isAnimating = false;
+      animationFrameId = null;
     }
   }
 
-  requestAnimationFrame(animate);
+  animationFrameId = requestAnimationFrame(render);
 }
 
+
 export function playForward() {
-  playFrames(1, TOTAL_FRAMES);
+  animateTo(TOTAL_FRAMES); 
 }
 
 export function playBackward() {
-  playFrames(TOTAL_FRAMES, 1);
+  animateTo(1); 
 }
 
 export function setDarkFrame() {
-  if (avatar) avatar.src = getFrame(TOTAL_FRAMES);
+  currentFrame = TOTAL_FRAMES;
+  if (avatar) avatar.src = getFramePath(TOTAL_FRAMES);
 }
 
 export function setLightFrame() {
-  if (avatar) avatar.src = getFrame(1);
+  currentFrame = 1;
+  if (avatar) avatar.src = getFramePath(1);
 }
