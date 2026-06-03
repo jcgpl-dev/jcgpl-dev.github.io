@@ -1,0 +1,160 @@
+/* ─── Minimalist AI Chatbot Widget ─── */
+
+#chat-toggle {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: var(--accent);
+  color: #ffffff;
+  border: none;
+
+  width: 56px;
+  height: 56px;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  z-index: 9999;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#chat-toggle:hover {
+  background: var(--accent-hover);
+  transform: scale(1.05);
+}
+
+#chat-window {
+  display: none; /* Controlled by JS toggle */
+  position: fixed;
+  bottom: 95px;
+  right: 25px;
+  width: 360px;
+  height: 480px;
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+  z-index: 9999;
+  flex-direction: column;
+  font-family: var(--font);
+  overflow: hidden;
+  transition: var(--transition-fast);
+}
+
+.chat-header {
+  background: var(--surface);
+  color: var(--foreground);
+  padding: 16px;
+  font-family: var(--font-title);
+  font-size: var(--text-body);
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+
+#close-chat {
+  cursor: pointer;
+  font-size: 20px;
+  color: var(--muted);
+  transition: var(--transition-fast);
+}
+
+#close-chat:hover {
+  color: var(--foreground);
+}
+
+#chat-history {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  background: var(--base);
+  font-size: var(--text-body);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Chat Bubbles Layout */
+.chat-bubble {
+  padding: 10px 14px;
+  max-width: 80%;
+  line-height: 1.5;
+  font-size: var(--text-body);
+}
+
+.chat-bubble.ai {
+  align-self: flex-start;
+  background: var(--surface);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+}
+
+.chat-bubble.user {
+  align-self: flex-end;
+  background: var(--accent);
+  color: #ffffff; /* Static bright text for user selection clarity */
+}
+
+.chat-bubble.loading {
+  align-self: flex-start;
+  background: transparent;
+  color: var(--muted);
+  font-style: italic;
+  padding: 4px 0;
+}
+
+/* Input Form Bar */
+.chat-input-container {
+  display: flex;
+  border-top: 1px solid var(--border);
+  padding: 12px;
+  background: var(--surface);
+  gap: 8px;
+}
+
+#chat-input {
+  flex: 1;
+  padding: 10px 12px;
+  background: var(--base);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  outline: none;
+  font-family: var(--font);
+  font-size: var(--text-body);
+  transition: var(--transition-fast);
+}
+
+#chat-input:focus {
+  border-color: var(--border-hover);
+}
+
+#send-btn {
+  background: var(--accent);
+  color: #ffffff;
+  border: none;
+  padding: 0 16px;
+  cursor: pointer;
+  font-family: var(--font);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  transition: var(--transition-fast);
+}
+
+#send-btn:hover {
+  background: var(--accent-hover);
+}
+
+#chat-toggle i {
+  font-size: 22px;
+  color: #ffffff; /* Ensures contrast on your brand accent color */
+  transition: var(--transition-fast);
+}
+
+/* Subtle micro-interaction rotate on hover */
+#chat-toggle:hover i {
+  transform: scale(1.1) rotate(-3deg);
+}

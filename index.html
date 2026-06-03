@@ -562,6 +562,37 @@
       </footer>
     </div>
 
+    <button id="chat-toggle" aria-label="Open AI Assistant">
+      <i class="fa-regular fa-comment-dots"></i>
+    </button>
+
+    <div id="chat-window">
+      <div class="chat-header">
+        <span>AI Assistant</span>
+        <span id="close-chat">&times;</span>
+      </div>
+
+      <div id="chat-history">
+        <div class="chat-bubble ai">
+          Hi there! Ask me anything about my projects, experience, or tech
+          stack! 👋
+        </div>
+      </div>
+
+      <div class="chat-input-container">
+        <input
+          type="text"
+          id="chat-input"
+          placeholder="Ask a question..."
+          autocomplete="off"
+        />
+        <button id="send-btn">Send</button>
+      </div>
+    </div>
+
+    <script type="module" src="./assets/js/main.js"></script>
+    <script type="module" src="./assets/js/chatbot.js"></script>
+
     <!-- JAVASCRIPT -->
     <script type="module" src="./assets/js/main.js"></script>
     <script type="module" src="./assets/js/theme.js"></script>
@@ -575,5 +606,6 @@
     <script type="module" src="./assets/js/footer.js"></script>
     <script type="module" src="./assets/js/reveal.js"></script>
     <script type="module" src="./assets/js/nav.js"></script>
+    <script type="module" src="./assets/js/chatbot.js"></script>
   </body>
 </html>
