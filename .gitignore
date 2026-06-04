@@ -1,1 +1,4 @@
 firebase.config
+# Ignore local Supabase development states
+.supabase/
+supabase/.netlify/
