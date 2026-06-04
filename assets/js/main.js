@@ -7,6 +7,7 @@ window.addEventListener('load', () => {
     loader.classList.add('fade-out');
     if (mainContent) {
       mainContent.style.opacity = '1';
+   
     }
 
     loader.addEventListener('transitionend', () => {

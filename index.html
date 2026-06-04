@@ -562,31 +562,66 @@
       </footer>
     </div>
 
-    <button id="chat-toggle" aria-label="Open AI Assistant">
+    <button id="chat-toggle" aria-label="Chat with Jesie">
       <i class="fa-regular fa-comment-dots"></i>
     </button>
 
-    <div id="chat-window">
+    <div id="chat-window" style="display: none">
       <div class="chat-header">
-        <span>AI Assistant</span>
-        <span id="close-chat">&times;</span>
+        <div class="chat-header-profile">
+          <img
+            src="./assets/images/profile.png"
+            alt="Jesie Gapol"
+            class="chat-avatar-img"
+          />
+          <div class="chat-status-info">
+            <span class="chat-header-title">Chat with Jesie</span>
+            <span class="chat-status-tag"
+              ><span class="status-dot"></span> Online</span
+            >
+          </div>
+        </div>
+        <button id="close-chat" aria-label="Close Chat">&times;</button>
       </div>
 
+      <!-- Chat Content Log Stream -->
       <div id="chat-history">
-        <div class="chat-bubble ai">
-          Hi there! Ask me anything about my projects, experience, or tech
-          stack! 👋
+        <div class="chat-message-row ai-msg-row">
+          <div class="chat-msg-author-meta">
+            <img
+              src="./assets/images/profile.png"
+              alt="Jesie"
+              class="chat-bubble-avatar"
+            />
+            <span class="chat-author-name">Jesie Gapol</span>
+          </div>
+          <div class="chat-bubble ai">
+            Hi there! 👋 Thanks for visiting my website. Feel free to ask me
+            anything about programming, cross-platform development, or my
+            experiences in tech. Let me know how I can help!
+          </div>
         </div>
       </div>
 
-      <div class="chat-input-container">
-        <input
-          type="text"
-          id="chat-input"
-          placeholder="Ask a question..."
-          autocomplete="off"
-        />
-        <button id="send-btn">Send</button>
+      <div class="chat-footer-area">
+        <div class="chat-input-container">
+          <input
+            type="text"
+            id="chat-input"
+            placeholder="Type a message..."
+            autocomplete="off"
+            maxlength="1000"
+          />
+          <button id="send-btn" aria-label="Send Message">
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+        <div class="chat-meta-row">
+          <span class="chat-hint-text"
+            >Ask me about flutter, web dev, or tech!</span
+          >
+          <span id="chat-char-counter">0/1000</span>
+        </div>
       </div>
     </div>
 

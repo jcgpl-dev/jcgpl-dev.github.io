@@ -4,70 +4,116 @@ const closeChat = document.getElementById('close-chat');
 const chatInput = document.getElementById('chat-input');
 const chatHistory = document.getElementById('chat-history');
 const sendBtn = document.getElementById('send-btn');
+const charCounter = document.getElementById('chat-char-counter');
 
 const SUPABASE_FUNCTION_URL = 'https://yyfifnhhwstcwqraynci.supabase.co/functions/v1/portfolio-chat';
 
-// Toggle Chat Visibility
+// Show / Hide Panel Toggles
 chatToggle.addEventListener('click', () => {
-    chatWindow.style.display = chatWindow.style.display === 'none' ? 'flex' : 'none';
+  const isHidden = chatWindow.style.display === 'none';
+  chatWindow.style.display = isHidden ? 'flex' : 'none';
+  if (isHidden) chatInput.focus();
 });
+
 closeChat.addEventListener('click', () => { 
-    chatWindow.style.display = 'none'; 
+  chatWindow.style.display = 'none'; 
+});
+
+// Character Length Live Monitor
+chatInput.addEventListener('input', () => {
+  const currentLength = chatInput.value.length;
+  charCounter.textContent = `${currentLength}/1000`;
 });
 
 // Send Message Handler
 async function handleSend() {
-    const userMessage = chatInput.value.trim();
-    if (!userMessage) return;
+  const userMessage = chatInput.value.trim();
+  if (!userMessage) return;
 
-    // Append user message
-    chatHistory.innerHTML += `
-        <div style="align-self: flex-end; background: #007bff; color: white; padding: 8px 12px; border-radius: 12px; max-width: 80%;">
-            ${userMessage}
-        </div>
-    `;
-    chatInput.value = '';
-    chatHistory.scrollTop = chatHistory.scrollHeight;
+  // Append User Bubble wrapped with alignment rows
+  chatHistory.innerHTML += `
+    <div class="chat-message-row user-msg-row">
+      <div class="chat-bubble user">
+        ${userMessage}
+      </div>
+    </div>
+  `;
+  
+  // Clear Input Box & resets char limit node
+  chatInput.value = '';
+  charCounter.textContent = '0/1000';
+  chatHistory.scrollTop = chatHistory.scrollHeight;
 
-    // Show typing loader
-    const loadingId = 'loading-' + Date.now();
-    chatHistory.innerHTML += `
-        <div id="${loadingId}" style="align-self: flex-start; background: #e9ecef; color: #777; padding: 8px 12px; border-radius: 12px; font-style: italic;">
-            Typing...
-        </div>
-    `;
-    chatHistory.scrollTop = chatHistory.scrollHeight;
+  // Display Typing State row styled with your profile avatar reference
+  const loadingId = 'loading-' + Date.now();
+  chatHistory.innerHTML += `
+    <div id="${loadingId}" class="chat-message-row ai-msg-row">
+      <div class="chat-msg-author-meta">
+        <img src="assets/images/profile.png" alt="Jesie" class="chat-bubble-avatar" />
+        <span class="chat-author-name">Jesie Gapol</span>
+      </div>
+      <div class="chat-bubble loading">
+        Typing...
+      </div>
+    </div>
+  `;
+  chatHistory.scrollTop = chatHistory.scrollHeight;
 
-    try {
-       const response = await fetch(SUPABASE_FUNCTION_URL, {
-    method: 'POST',
-    headers: { 
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ message: userMessage }) 
-});
-        
-        const data = await response.json();
-        document.getElementById(loadingId).remove();
+  try {
+    const response = await fetch(SUPABASE_FUNCTION_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: userMessage }) 
+    });
+    
+    const data = await response.json();
+    const loader = document.getElementById(loadingId);
+    if (loader) loader.remove();
 
-        // Append AI response
-        chatHistory.innerHTML += `
-            <div style="align-self: flex-start; background: #e9ecef; color: #333; padding: 8px 12px; border-radius: 12px; max-width: 80%;">
-                ${data.reply}
-            </div>
-        `;
-    } catch (error) {
-        document.getElementById(loadingId).remove();
-        chatHistory.innerHTML += `
-            <div style="align-self: flex-start; background: #dc3545; color: white; padding: 8px 12px; border-radius: 12px;">
-                Error: Unable to connect right now.
-            </div>
-        `;
+    // Context validation
+    let aiAnswer = "";
+    if (data.reply) {
+      aiAnswer = data.reply;
+    } else if (data.error) {
+      aiAnswer = `⚠️ Error: ${data.error}`;
+    } else if (typeof data === 'string') {
+      aiAnswer = data;
+    } else {
+      aiAnswer = JSON.stringify(data);
     }
-    chatHistory.scrollTop = chatHistory.scrollHeight;
+
+    // Append Refactored AI message row containing metadata block
+    chatHistory.innerHTML += `
+      <div class="chat-message-row ai-msg-row">
+        <div class="chat-msg-author-meta">
+          <img src="assets/images/profile.png" alt="Jesie" class="chat-bubble-avatar" />
+          <span class="chat-author-name">Jesie Gapol</span>
+        </div>
+        <div class="chat-bubble ai">
+          ${aiAnswer}
+        </div>
+      </div>
+    `;
+  } catch (error) {
+    const loader = document.getElementById(loadingId);
+    if (loader) loader.remove();
+    
+    chatHistory.innerHTML += `
+      <div class="chat-message-row ai-msg-row">
+        <div class="chat-msg-author-meta">
+          <img src="assets/images/profile.png" alt="Jesie" class="chat-bubble-avatar" />
+          <span class="chat-author-name">Jesie Gapol</span>
+        </div>
+        <div class="chat-bubble ai" style="color: var(--error); border: 1px solid var(--error);">
+          Error: Unable to process your request at this moment.
+        </div>
+      </div>
+    `;
+  }
+  chatHistory.scrollTop = chatHistory.scrollHeight;
 }
 
 sendBtn.addEventListener('click', handleSend);
 chatInput.addEventListener('keypress', (e) => { 
-    if (e.key === 'Enter') handleSend(); 
+  if (e.key === 'Enter') handleSend(); 
 });

@@ -1,5 +1,3 @@
-/* ─── Minimalist AI Chatbot Widget ─── */
-
 #chat-toggle {
   position: fixed;
   bottom: 25px;
@@ -7,7 +5,7 @@
   background: var(--accent);
   color: #ffffff;
   border: none;
-
+  border-radius: 0;
   width: 56px;
   height: 56px;
   font-size: 24px;
@@ -25,16 +23,26 @@
   transform: scale(1.05);
 }
 
+#chat-toggle i {
+  font-size: 22px;
+  color: #ffffff;
+  transition: var(--transition-fast);
+}
+
+#chat-toggle:hover i {
+  transform: scale(1.1) rotate(-3deg);
+}
+
 #chat-window {
-  display: none; /* Controlled by JS toggle */
+  display: none;
   position: fixed;
   bottom: 95px;
   right: 25px;
-  width: 360px;
-  height: 480px;
+  width: 370px;
+  height: 540px;
   background: var(--surface);
-
   border: 1px solid var(--border);
+  border-radius: 0;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
   z-index: 9999;
   flex-direction: column;
@@ -56,17 +64,64 @@
   border-bottom: 1px solid var(--border);
 }
 
+.chat-header-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.chat-avatar-img {
+  width: 40px;
+  height: 40px;
+
+  object-fit: cover;
+  background: var(--border);
+}
+
+.chat-status-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.chat-header-title {
+  font-size: var(--text-body);
+  font-weight: 600;
+  color: var(--foreground);
+  line-height: 1.2;
+}
+
+.chat-status-tag {
+  font-size: 11px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  background-color: #2ecc71; /* Live green online indicator */
+  border-radius: 0; /* Sharp status marker block */
+  display: inline-block;
+}
+
 #close-chat {
+  background: none;
+  border: none;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 22px;
   color: var(--muted);
   transition: var(--transition-fast);
+  line-height: 1;
 }
 
 #close-chat:hover {
   color: var(--foreground);
 }
 
+/* ─── Stream Log Conversation Container ─── */
 #chat-history {
   flex: 1;
   padding: 16px;
@@ -75,45 +130,85 @@
   font-size: var(--text-body);
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px; /* Spacing between distinct message row elements */
 }
 
-/* Chat Bubbles Layout */
+/* Row-based Structure wrappers */
+.chat-message-row {
+  display: flex;
+  flex-direction: column;
+  max-width: 85%;
+}
+
+.chat-message-row.ai-msg-row {
+  align-self: flex-start;
+}
+
+.chat-message-row.user-msg-row {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+
+/* Meta Labels for Identity Headers */
+.chat-msg-author-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.chat-bubble-avatar {
+  width: 24px;
+  height: 24px;
+
+  object-fit: cover;
+}
+
+.chat-author-name {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--foreground);
+}
+
 .chat-bubble {
-  padding: 10px 14px;
-  max-width: 80%;
+  padding: 12px 14px;
   line-height: 1.5;
   font-size: var(--text-body);
+  border-radius: 0; /* Forces complete sharp look */
+  border: none; /* Removes standard framing outline borders */
 }
 
 .chat-bubble.ai {
-  align-self: flex-start;
-  background: var(--surface);
+  background: var(
+    --surface
+  ); /* Light minimal layout grey block matching image_96a5c9.png */
   color: var(--foreground);
-  border: 1px solid var(--border);
 }
 
 .chat-bubble.user {
-  align-self: flex-end;
   background: var(--accent);
-  color: #ffffff; /* Static bright text for user selection clarity */
+  color: #ffffff;
 }
 
 .chat-bubble.loading {
-  align-self: flex-start;
   background: transparent;
   color: var(--muted);
   font-style: italic;
   padding: 4px 0;
 }
 
-/* Input Form Bar */
-.chat-input-container {
-  display: flex;
+.chat-footer-area {
   border-top: 1px solid var(--border);
   padding: 12px;
   background: var(--surface);
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-input-container {
+  display: flex;
   gap: 8px;
+  align-items: stretch;
 }
 
 #chat-input {
@@ -122,6 +217,7 @@
   background: var(--base);
   color: var(--foreground);
   border: 1px solid var(--border);
+  border-radius: 0;
   outline: none;
   font-family: var(--font);
   font-size: var(--text-body);
@@ -129,18 +225,22 @@
 }
 
 #chat-input:focus {
-  border-color: var(--border-hover);
+  border-color: var(--accent);
 }
 
 #send-btn {
   background: var(--accent);
   color: #ffffff;
   border: none;
-  padding: 0 16px;
+  border-radius: 0; /* Sharp button edge */
+  padding: 0 14px;
   cursor: pointer;
   font-family: var(--font);
   font-size: var(--text-sm);
   font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: var(--transition-fast);
 }
 
@@ -148,13 +248,23 @@
   background: var(--accent-hover);
 }
 
-#chat-toggle i {
-  font-size: 22px;
-  color: #ffffff; /* Ensures contrast on your brand accent color */
-  transition: var(--transition-fast);
+.chat-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 6px;
+  font-size: 11px;
+  color: var(--muted);
+  font-family: var(--font);
 }
 
-/* Subtle micro-interaction rotate on hover */
-#chat-toggle:hover i {
-  transform: scale(1.1) rotate(-3deg);
+.chat-hint-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 75%;
+}
+
+#chat-char-counter {
+  font-variant-numeric: tabular-nums;
 }
