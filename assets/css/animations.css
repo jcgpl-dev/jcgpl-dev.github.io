@@ -157,3 +157,14 @@
     transform: none;
   }
 }
+
+/* Mouse trail containment layout security layering variables */
+#interaction-canvas {
+  mix-blend-mode: screen; /* Correctly blends neon overlays on dark panels */
+  opacity: 0.9; /* Boosted opacity to give the glare maximum kick */
+}
+
+:root:not(.dark-mode) #interaction-canvas {
+  mix-blend-mode: normal;
+  opacity: 0.6;
+}

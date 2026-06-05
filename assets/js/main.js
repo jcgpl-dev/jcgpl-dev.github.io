@@ -81,3 +81,4 @@ window.monitorImageLoading = monitorImageLoading;
 
 
 monitorImageLoading();
+
