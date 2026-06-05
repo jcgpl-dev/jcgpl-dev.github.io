@@ -18,35 +18,35 @@ window.addEventListener('load', () => {
 });
 
 
-// document.addEventListener('contextmenu', (event) => {
-//   event.preventDefault();
-// });
+document.addEventListener('contextmenu', (event) => {
+  event.preventDefault();
+});
 
 
-// document.addEventListener('keydown', (event) => {
+document.addEventListener('keydown', (event) => {
 
-//   if (event.key === 'F12') {
-//     event.preventDefault();
-//     return false;
-//   }
+  if (event.key === 'F12') {
+    event.preventDefault();
+    return false;
+  }
 
-//   if (
-//     (event.ctrlKey || event.metaKey) && 
-//     event.shiftKey && 
-//     (event.key === 'I' || event.key === 'i' || 
-//      event.key === 'J' || event.key === 'j' || 
-//      event.key === 'C' || event.key === 'c')
-//   ) {
-//     event.preventDefault();
-//     return false;
-//   }
+  if (
+    (event.ctrlKey || event.metaKey) && 
+    event.shiftKey && 
+    (event.key === 'I' || event.key === 'i' || 
+     event.key === 'J' || event.key === 'j' || 
+     event.key === 'C' || event.key === 'c')
+  ) {
+    event.preventDefault();
+    return false;
+  }
 
 
-//   if ((event.ctrlKey || event.metaKey) && (event.key === 'U' || event.key === 'u')) {
-//     event.preventDefault();
-//     return false;
-//   }
-// });
+  if ((event.ctrlKey || event.metaKey) && (event.key === 'U' || event.key === 'u')) {
+    event.preventDefault();
+    return false;
+  }
+});
 
 export function monitorImageLoading(container = document.body) {
   
