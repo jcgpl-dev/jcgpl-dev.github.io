@@ -285,7 +285,7 @@ body.chat-open {
   font-variant-numeric: tabular-nums;
 }
 
-/* ── Animated typing indicator ─────────────────────────────────────────────── */
+/*  Animated typing indicator  */
 .chat-bubble--typing {
   display: flex;
   align-items: center;
@@ -298,7 +298,6 @@ body.chat-open {
   display: inline-block;
   width: 7px;
   height: 7px;
-  border-radius: 50%;
   background: currentColor;
   opacity: 0.25;
   animation: typingBounce 1.2s ease-in-out infinite;
@@ -339,5 +338,4 @@ body.chat-open {
   font-size: 0.88em;
   background: rgba(128, 128, 128, 0.15);
   padding: 1px 5px;
-  border-radius: 4px;
 }
