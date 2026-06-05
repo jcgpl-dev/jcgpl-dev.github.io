@@ -134,7 +134,7 @@ body.chat-open {
 }
 
 #close-chat:hover {
-  color: var(--foreground);
+  color: var(--error);
 }
 
 /* ─── Stream Log Conversation Container ─── */
