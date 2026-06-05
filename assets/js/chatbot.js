@@ -5,23 +5,36 @@ const chatInput = document.getElementById('chat-input');
 const chatHistory = document.getElementById('chat-history');
 const sendBtn = document.getElementById('send-btn');
 const charCounter = document.getElementById('chat-char-counter');
+const chatOverlay = document.getElementById('chat-overlay');
 
 const SUPABASE_FUNCTION_URL = 'https://yyfifnhhwstcwqraynci.supabase.co/functions/v1/portfolio-chat';
 
-// Show / Hide Panel Toggles
+// Centralized close handler to clean up classes and displays
+function handleCloseChat() {
+  chatWindow.style.display = 'none'; 
+  chatOverlay.style.display = 'none';
+  document.body.classList.remove('chat-open'); // Returns desktop/mobile page scroll
+  chatToggle.style.display = 'flex'; 
+}
+
+// Show Panel Toggles
 chatToggle.addEventListener('click', () => {
-  const isHidden = chatWindow.style.display === 'none';
-  chatWindow.style.display = isHidden ? 'flex' : 'none';
+  const isHidden = chatWindow.style.display === 'none' || chatWindow.style.display === '';
+  
   if (isHidden) {
+    chatWindow.style.display = 'flex';
+    chatOverlay.style.display = 'block'; // Block background taps
+    document.body.classList.add('chat-open'); // Freeze background scroll
     chatInput.focus();
-     chatToggle.style.display =  'none';
+    chatToggle.style.display = 'none';
   } 
 });
 
-closeChat.addEventListener('click', () => { 
-  chatWindow.style.display = 'none'; 
-  chatToggle.style.display = 'flex'; 
-});
+// Close panel via the 'X' button
+closeChat.addEventListener('click', handleCloseChat);
+
+// Dismiss chat if user clicks anywhere outside the box on the backdrop overlay
+chatOverlay.addEventListener('click', handleCloseChat);
 
 // Character Length Live Monitor
 chatInput.addEventListener('input', () => {
