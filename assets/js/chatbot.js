@@ -1,136 +1,202 @@
-const chatToggle = document.getElementById('chat-toggle');
-const chatWindow = document.getElementById('chat-window');
-const closeChat = document.getElementById('close-chat');
-const chatInput = document.getElementById('chat-input');
-const chatHistory = document.getElementById('chat-history');
-const sendBtn = document.getElementById('send-btn');
-const charCounter = document.getElementById('chat-char-counter');
-const chatOverlay = document.getElementById('chat-overlay');
+const chatToggle   = document.getElementById('chat-toggle');
+const chatWindow   = document.getElementById('chat-window');
+const closeChat    = document.getElementById('close-chat');
+const chatInput    = document.getElementById('chat-input');
+const chatHistory  = document.getElementById('chat-history');
+const sendBtn      = document.getElementById('send-btn');
+const charCounter  = document.getElementById('chat-char-counter');
+const chatOverlay  = document.getElementById('chat-overlay');
 
-const SUPABASE_FUNCTION_URL = 'https://yyfifnhhwstcwqraynci.supabase.co/functions/v1/portfolio-chat';
+const SUPABASE_FUNCTION_URL =
+  'https://yyfifnhhwstcwqraynci.supabase.co/functions/v1/portfolio-chat';
 
-// Centralized close handler to clean up classes and displays
-function handleCloseChat() {
-  chatWindow.style.display = 'none'; 
-  chatOverlay.style.display = 'none';
-  document.body.classList.remove('chat-open'); // Returns desktop/mobile page scroll
-  chatToggle.style.display = 'flex'; 
+// ─── Conversation history (multi-turn memory) ────────────────────────────────
+// Each entry: { role: "user" | "model", parts: [{ text: string }] }
+const conversationHistory = [];
+
+// ─── Sanitize helpers ────────────────────────────────────────────────────────
+// Safely sets text content — prevents XSS from user input
+function escapeHTML(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
 }
 
-// Show Panel Toggles
+// Lightweight formatter for AI replies only:
+// converts newlines to <br> and wraps inline code in <code> tags
+function formatAIReply(text) {
+  // Escape first so no raw HTML from AI reaches the DOM
+  let safe = escapeHTML(text);
+  // Restore intentional line breaks
+  safe = safe.replace(/\n/g, '<br>');
+  // Wrap `backtick code` as <code> spans
+  safe = safe.replace(/`([^`]+)`/g, '<code>$1</code>');
+  return safe;
+}
+
+// ─── Panel open / close ──────────────────────────────────────────────────────
+function handleCloseChat() {
+  chatWindow.style.display  = 'none';
+  chatOverlay.style.display = 'none';
+  document.body.classList.remove('chat-open');
+  chatToggle.style.display  = 'flex';
+}
+
 chatToggle.addEventListener('click', () => {
-  const isHidden = chatWindow.style.display === 'none' || chatWindow.style.display === '';
-  
+  const isHidden =
+    chatWindow.style.display === 'none' || chatWindow.style.display === '';
+
   if (isHidden) {
-    chatWindow.style.display = 'flex';
-    chatOverlay.style.display = 'block'; // Block background taps
-    document.body.classList.add('chat-open'); // Freeze background scroll
+    chatWindow.style.display  = 'flex';
+    chatOverlay.style.display = 'block';
+    document.body.classList.add('chat-open');
     chatInput.focus();
     chatToggle.style.display = 'none';
-  } 
+  }
 });
 
-// Close panel via the 'X' button
 closeChat.addEventListener('click', handleCloseChat);
-
-// Dismiss chat if user clicks anywhere outside the box on the backdrop overlay
 chatOverlay.addEventListener('click', handleCloseChat);
 
-// Character Length Live Monitor
+// ─── Character counter ───────────────────────────────────────────────────────
 chatInput.addEventListener('input', () => {
-  const currentLength = chatInput.value.length;
-  charCounter.textContent = `${currentLength}/1000`;
+  charCounter.textContent = `${chatInput.value.length}/1000`;
 });
 
-// Send Message Handler
+// ─── DOM bubble builders (no innerHTML for user content) ─────────────────────
+function buildUserBubble(text) {
+  const row = document.createElement('div');
+  row.className = 'chat-message-row user-msg-row';
+
+  const bubble = document.createElement('div');
+  bubble.className = 'chat-bubble user';
+  bubble.textContent = text; // ← safe: no HTML parsing
+
+  row.appendChild(bubble);
+  return row;
+}
+
+function buildAIBubble(htmlContent, isError = false) {
+  const row = document.createElement('div');
+  row.className = 'chat-message-row ai-msg-row';
+
+  const meta = document.createElement('div');
+  meta.className = 'chat-msg-author-meta';
+  meta.innerHTML = `
+    <img src="assets/images/profile.png" alt="Jesie" class="chat-bubble-avatar" />
+    <span class="chat-author-name">Jesie Gapol</span>
+  `;
+
+  const bubble = document.createElement('div');
+  bubble.className = 'chat-bubble ai' + (isError ? ' chat-bubble--error' : '');
+  bubble.innerHTML = htmlContent; // ← AI content only, already sanitized via formatAIReply
+
+  row.appendChild(meta);
+  row.appendChild(bubble);
+  return row;
+}
+
+function buildTypingIndicator(id) {
+  const row = document.createElement('div');
+  row.className = 'chat-message-row ai-msg-row';
+  row.id = id;
+
+  const meta = document.createElement('div');
+  meta.className = 'chat-msg-author-meta';
+  meta.innerHTML = `
+    <img src="assets/images/profile.png" alt="Jesie" class="chat-bubble-avatar" />
+    <span class="chat-author-name">Jesie Gapol</span>
+  `;
+
+  const bubble = document.createElement('div');
+  bubble.className = 'chat-bubble ai chat-bubble--typing';
+  // Three animated dots rendered purely via CSS
+  bubble.innerHTML = `<span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>`;
+
+  row.appendChild(meta);
+  row.appendChild(bubble);
+  return row;
+}
+
+// ─── Send handler ────────────────────────────────────────────────────────────
 async function handleSend() {
   const userMessage = chatInput.value.trim();
   if (!userMessage) return;
 
-  // Append User Bubble wrapped with alignment rows
-  chatHistory.innerHTML += `
-    <div class="chat-message-row user-msg-row">
-      <div class="chat-bubble user">
-        ${userMessage}
-      </div>
-    </div>
-  `;
-  
-  // Clear Input Box & resets char limit node
-  chatInput.value = '';
-  charCounter.textContent = '0/1000';
-  chatHistory.scrollTop = chatHistory.scrollHeight;
+  // Disable input while waiting
+  chatInput.disabled = true;
+  sendBtn.disabled   = true;
 
-  // Display Typing State row styled with your profile avatar reference
-  const loadingId = 'loading-' + Date.now();
-  chatHistory.innerHTML += `
-    <div id="${loadingId}" class="chat-message-row ai-msg-row">
-      <div class="chat-msg-author-meta">
-        <img src="assets/images/profile.png" alt="Jesie" class="chat-bubble-avatar" />
-        <span class="chat-author-name">Jesie Gapol</span>
-      </div>
-      <div class="chat-bubble loading">
-        Typing...
-      </div>
-    </div>
-  `;
+  // Append user bubble (XSS-safe)
+  chatHistory.appendChild(buildUserBubble(userMessage));
+
+  // Reset input
+  chatInput.value       = '';
+  charCounter.textContent = '0/1000';
+  chatHistory.scrollTop   = chatHistory.scrollHeight;
+
+  // Add this turn to history BEFORE sending so the backend sees it
+  conversationHistory.push({
+    role: 'user',
+    parts: [{ text: userMessage }],
+  });
+
+  // Show animated typing indicator
+  const loadingId  = 'loading-' + Date.now();
+  const typingRow  = buildTypingIndicator(loadingId);
+  chatHistory.appendChild(typingRow);
   chatHistory.scrollTop = chatHistory.scrollHeight;
 
   try {
     const response = await fetch(SUPABASE_FUNCTION_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: userMessage }) 
+      body: JSON.stringify({
+        message: userMessage,
+        history: conversationHistory, // ← pass full history for multi-turn memory
+      }),
     });
-    
-    const data = await response.json();
-    const loader = document.getElementById(loadingId);
-    if (loader) loader.remove();
 
-    // Context validation
-    let aiAnswer = "";
+    const data = await response.json();
+    document.getElementById(loadingId)?.remove();
+
+    let aiAnswer = '';
     if (data.reply) {
       aiAnswer = data.reply;
     } else if (data.error) {
-      aiAnswer = `⚠️ Error: ${data.error}`;
-    } else if (typeof data === 'string') {
-      aiAnswer = data;
+      aiAnswer = `Sorry, something went wrong: ${data.error}`;
     } else {
-      aiAnswer = JSON.stringify(data);
+      aiAnswer = 'I had trouble responding. Please try again.';
     }
 
-    // Append Refactored AI message row containing metadata block
-    chatHistory.innerHTML += `
-      <div class="chat-message-row ai-msg-row">
-        <div class="chat-msg-author-meta">
-          <img src="assets/images/profile.png" alt="Jesie" class="chat-bubble-avatar" />
-          <span class="chat-author-name">Jesie Gapol</span>
-        </div>
-        <div class="chat-bubble ai">
-          ${aiAnswer}
-        </div>
-      </div>
-    `;
-  } catch (error) {
-    const loader = document.getElementById(loadingId);
-    if (loader) loader.remove();
-    
-    chatHistory.innerHTML += `
-      <div class="chat-message-row ai-msg-row">
-        <div class="chat-msg-author-meta">
-          <img src="assets/images/profile.png" alt="Jesie" class="chat-bubble-avatar" />
-          <span class="chat-author-name">Jesie Gapol</span>
-        </div>
-        <div class="chat-bubble ai" style="color: var(--error); border: 1px solid var(--error);">
-          Error: Unable to process your request at this moment.
-        </div>
-      </div>
-    `;
+    // Store the model reply in history for next turn
+    conversationHistory.push({
+      role: 'model',
+      parts: [{ text: aiAnswer }],
+    });
+
+    // Trim history to last 20 turns to avoid token bloat
+    if (conversationHistory.length > 20) {
+      conversationHistory.splice(0, conversationHistory.length - 20);
+    }
+
+    chatHistory.appendChild(buildAIBubble(formatAIReply(aiAnswer)));
+  } catch {
+    document.getElementById(loadingId)?.remove();
+    chatHistory.appendChild(
+      buildAIBubble('Unable to reach the server. Please check your connection and try again.', true)
+    );
+    // Remove the failed user turn from history so it doesn't corrupt future context
+    conversationHistory.pop();
+  } finally {
+    chatInput.disabled  = false;
+    sendBtn.disabled    = false;
+    chatInput.focus();
+    chatHistory.scrollTop = chatHistory.scrollHeight;
   }
-  chatHistory.scrollTop = chatHistory.scrollHeight;
 }
 
 sendBtn.addEventListener('click', handleSend);
-chatInput.addEventListener('keypress', (e) => { 
-  if (e.key === 'Enter') handleSend(); 
+chatInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter' && !e.shiftKey) handleSend();
 });
