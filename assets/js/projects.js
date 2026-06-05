@@ -69,7 +69,7 @@ function renderLinks(project) {
 
 function renderTags(techStack = []) {
   if (!techStack.length) return "";
-  const tags = techStack.map(t => `<span class="tag">#${t}</span>`).join("");
+  const tags = techStack.map(t => `<span class="tag">${t}</span>`).join("");
   return `<div class="tag-row project-tags">${tags}</div>`;
 }
 
@@ -104,23 +104,23 @@ function renderProjects() {
             aria-label="View ${project.title} full image"
           >
             <svg
-  viewBox="0 0 24 24"
-  width="18"
-  height="18"
-  aria-hidden="true"
-  focusable="false"
-  fill="none"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <polyline points="15 3 21 3 21 9" />
-  <line x1="14" y1="10" x2="21" y2="3" />
-  
-  <polyline points="9 21 3 21 3 15" />
-  <line x1="10" y1="14" x2="3" y2="21" />
-</svg>
+            viewBox="0 0 24 24"
+            width="18"
+            height="18"
+            aria-hidden="true"
+            focusable="false"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polyline points="15 3 21 3 21 9" />
+            <line x1="14" y1="10" x2="21" y2="3" />
+            
+            <polyline points="9 21 3 21 3 15" />
+            <line x1="10" y1="14" x2="3" y2="21" />
+          </svg>
 
           </button>
           <img
@@ -175,7 +175,7 @@ function setupProjectModal() {
     !prevBtn ||
     !nextBtn ||
     !closeBtn ||
-    !grid
+    !grid 
   ) {
     return;
   }
@@ -193,7 +193,9 @@ function setupProjectModal() {
     return project.image ? [project.image] : [];
   };
 
-
+// chat toggle and modal
+  const chatToggle = document.getElementById('chat-toggle');
+  const chatWindow = document.getElementById('chat-window');
 
 const renderCodeSnippet = codeSnippet => {
   if (!codeSnippet) return "";
@@ -429,6 +431,8 @@ const renderCodeSnippet = codeSnippet => {
     modal.hidden = false;
     modal.setAttribute("aria-hidden", "false");
     document.body.classList.add("modal-open");
+    chatToggle.style.display = 'none';
+    chatWindow.style.display =  'none';
     closeBtn.focus();
   };
 
@@ -450,6 +454,7 @@ const renderCodeSnippet = codeSnippet => {
     activeIndex = 0;
     activeTitle = "";
     document.body.classList.remove("modal-open");
+    chatToggle.style.display = 'flex';
     if (lastTrigger) lastTrigger.focus();
   };
 

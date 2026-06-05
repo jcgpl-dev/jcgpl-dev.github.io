@@ -36,7 +36,7 @@
 #chat-window {
   display: none;
   position: fixed;
-  bottom: 95px;
+  bottom: 25px;
   right: 25px;
   width: 370px;
   height: 540px;

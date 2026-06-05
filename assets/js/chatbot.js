@@ -12,11 +12,15 @@ const SUPABASE_FUNCTION_URL = 'https://yyfifnhhwstcwqraynci.supabase.co/function
 chatToggle.addEventListener('click', () => {
   const isHidden = chatWindow.style.display === 'none';
   chatWindow.style.display = isHidden ? 'flex' : 'none';
-  if (isHidden) chatInput.focus();
+  if (isHidden) {
+    chatInput.focus();
+     chatToggle.style.display =  'none';
+  } 
 });
 
 closeChat.addEventListener('click', () => { 
   chatWindow.style.display = 'none'; 
+  chatToggle.style.display = 'flex'; 
 });
 
 // Character Length Live Monitor
