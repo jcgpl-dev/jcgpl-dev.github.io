@@ -1,0 +1,113 @@
+/* Centred inner wrapper */
+.loader-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 420px;
+  padding: 0 1.25rem;
+}
+
+.loader-logo-line {
+  font-family: var(--font-title, "Outfit", sans-serif);
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--foreground);
+  margin-bottom: 28px;
+  line-height: 1;
+  user-select: none;
+}
+
+.loader-logo-bracket {
+  color: var(--muted);
+}
+
+.loader-logo-name {
+  color: var(--accent);
+}
+
+/* Terminal block */
+.loader-terminal {
+  font-family: "JetBrains Mono", "Fira Code", "Courier New", monospace;
+  font-size: 13px;
+  line-height: 1.85;
+  width: 100%;
+}
+
+/* Each line fades + slides up on appear */
+.loader-t-line {
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+  min-height: 1.85em;
+  opacity: 0;
+  transform: translateY(5px);
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease;
+  white-space: pre;
+}
+
+.loader-t-line.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Syntax colours — all from your --code-* tokens */
+.loader-t-prompt {
+  color: var(--accent);
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+.loader-t-cmd {
+  color: var(--foreground);
+}
+.loader-t-out {
+  color: var(--muted);
+  padding-left: 20px;
+}
+.loader-t-ok {
+  color: var(--success);
+  padding-left: 20px;
+}
+.loader-t-kw {
+  color: var(--code-keyword);
+}
+.loader-t-fn {
+  color: var(--code-function);
+}
+.loader-t-num {
+  color: var(--code-number);
+}
+
+/* Progress bar */
+.loader-bar-filled {
+  color: var(--accent);
+  letter-spacing: -0.5px;
+}
+.loader-bar-empty {
+  color: var(--muted);
+  letter-spacing: -0.5px;
+}
+
+/* Blinking block cursor */
+.loader-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 14px;
+  background: var(--accent);
+  vertical-align: middle;
+  margin-left: 2px;
+  animation: loader-blink 1s step-end infinite;
+}
+
+@keyframes loader-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}

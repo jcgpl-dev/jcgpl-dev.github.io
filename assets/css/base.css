@@ -138,39 +138,6 @@ body {
   align-items: center;
 }
 
-/* Custom logo sizing and breathing animation */
-.loader-logo {
-  height: 65px;
-  width: auto;
-  user-select: none;
-  pointer-events: none;
-  animation: logoBreath 2s ease-in-out infinite;
-}
-
-@keyframes logoBreath {
-  0%,
-  100% {
-    transform: scale(0.95);
-    opacity: 0.65;
-  }
-  50% {
-    transform: scale(1.05);
-    opacity: 1;
-  }
-}
-
-@keyframes inlineLogoBreath {
-  0%,
-  100% {
-    transform: translate(-50%, -50%) scale(0.95);
-    opacity: 0.65;
-  }
-  50% {
-    transform: translate(-50%, -50%) scale(1.05);
-    opacity: 1;
-  }
-}
-
 /* Class applied via JS to gracefully exit the loader screen */
 .loader-overlay.fade-out {
   opacity: 0;
@@ -183,32 +150,43 @@ body {
 .exp-media,
 .inline-loader-wrap {
   position: relative;
-  background-color: var(--surface);
+  background-color: var(--surface); /* Inherits your system terminal box tone */
   overflow: hidden;
 }
 
-/* Before pseudo-element acts as the centered breathing logo loader background */
+/* Replaced the old SVG image background with a clean console-like text placeholder */
 .project-image-wrap::before,
 .modal-media-wrap::before,
 .inline-loader-wrap::before,
 .exp-media::before {
-  content: "";
+  content: "❯_ FETCHING_MEDIA...";
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 65px;
-  height: 65px;
-
-  /* Safe fallback property values */
   transform: translate(-50%, -50%);
-  background: url("../images/svg/logo.svg") no-repeat center/contain;
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--accent);
+  font-weight: 600;
   z-index: 1;
   pointer-events: none;
-  animation: inlineLogoBreath 2s ease-in-out infinite;
+  animation: consolePulse 1.5s ease-in-out infinite;
   transition: opacity 0.3s ease;
 }
 
-/* Initially hide images while they are downloading */
+/* Minimalist console text pulse animation */
+@keyframes consolePulse {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Keep images hidden during transfer pipeline */
 .project-image-wrap img,
 .modal-media-wrap img,
 .inline-loader-wrap img,
@@ -219,12 +197,12 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: opacity 0.35s ease-in-out;
+  transition: opacity 0.4s ease-in-out;
   position: relative;
   z-index: 2;
 }
 
-/* When the image fully loads, fade it in and hide the breathing placeholder background */
+/* Clear out loading placeholder once main.js triggers '.img-loaded' */
 .project-image-wrap.img-loaded::before,
 .modal-media-wrap.img-loaded::before,
 .inline-loader-wrap.img-loaded::before,
@@ -233,6 +211,7 @@ body {
   opacity: 0;
 }
 
+/* Make image visible */
 .project-image-wrap.img-loaded img,
 .modal-media-wrap.img-loaded img,
 .inline-loader-wrap.img-loaded img,
