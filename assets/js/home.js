@@ -73,7 +73,7 @@ setupCVTracking();
     window.matchMedia &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  const roles = ["FLUTTER DEVELOPER", "GRAPHIC DESIGNER"];
+  const roles = ["FLUTTER DEVELOPER", "GRAPHIC DESIGNER", "COMPUTER SCIENCE STUDENT"];
   let idx = roles.indexOf(el.textContent?.trim() || "");
   if (idx < 0) idx = 0;
 
