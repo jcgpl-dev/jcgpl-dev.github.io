@@ -21,7 +21,7 @@ function setupCVTracking() {
   const cvLink = document.querySelector('.hero-actions a[download]');
   if (!cvLink) return;
 
-  // REMOVED 'async' from the listener wrapper to ensure older browsers don't stumble
+
   cvLink.addEventListener("click", () => {
     
     // Read window variables instantly before context blocks change
