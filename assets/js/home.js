@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
+import { getEnhancedDeviceInfo } from "./utils/deviceInfo.js";
 //hehe ayg saba dawg
 //yati ka ayaw nig hilabti ba
 const firebaseConfig = {
@@ -21,44 +21,29 @@ function setupCVTracking() {
   const cvLink = document.querySelector('.hero-actions a[download]');
   if (!cvLink) return;
 
+  cvLink.addEventListener("click", async () => {
+    const deviceInfo = await getEnhancedDeviceInfo();
 
-  cvLink.addEventListener("click", () => {
-    
-    // Read window variables instantly before context blocks change
-    const userAgent = navigator.userAgent;
-    const windowResolution = `${window.screen.width}x${window.screen.height}`;
-
-    // Isolate the asynchronous collection execution block
-    const trackDownload = async () => {
-      let ipAddress = "Unknown / Blocked";
-
-      try {
-        const ipResponse = await fetch("https://api.ipify.org?format=json");
-        if (ipResponse.ok) {
-          const ipData = await ipResponse.json();
-          ipAddress = ipData.ip;
-        }
-      } catch (e) {
-        console.warn("IP fetch omitted due to client configuration or adblocker.");
+    // Get IP
+    try {
+      const ipResponse = await fetch("https://api.ipify.org?format=json");
+      if (ipResponse.ok) {
+        const { ip } = await ipResponse.json();
+        deviceInfo.ip = ip;
       }
+    } catch (e) {
+      console.warn("IP fetch failed");
+    }
 
-      try {
-        await addDoc(collection(db, "cv_downloads"), {
-          downloadedAt: serverTimestamp(),
-          metadata: {
-            ip: ipAddress,
-            deviceAgent: userAgent,
-            screenResolution: windowResolution
-          }
-        });
-        console.log("CV Download metrics logged successfully.");
-      } catch (error) {
-        console.error("Metrics synchronization failed:", error);
-      }
-    };
-
-    // Execute the cloud synchronization safely in the background
-    trackDownload();
+    try {
+      await addDoc(collection(db, "cv_downloads"), {
+        downloadedAt: serverTimestamp(),
+        metadata: deviceInfo
+      });
+      console.log(" CV Download logged successfully");
+    } catch (error) {
+      console.error("Failed to log CV download:", error);
+    }
   });
 }
 

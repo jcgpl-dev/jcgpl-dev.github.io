@@ -1,31 +1,35 @@
-// assets/js/loader.js
-// Genuine terminal loading animation for jesie.gapol portfolio
+function buildLines() {
+  const isDark = document.body.classList.contains('dark-mode') ||
+                 localStorage.getItem('theme') === 'dark' ||
+                 (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
 
-const LINES = [
-  {
-    type: "cmd",
-    parts: [
-      { type: "kw", text: "import " },
-      { type: "fn", text: "Portfolio" },
-      { type: "plain", text: " from " },
-      { type: "num", text: '"./jesie.gapol"' },
-    ],
-  },
-  { type: "out", id: "module-wait", text: "// loading modules..." },
-  { type: "bar", id: "asset-bar", label: "bundling" },
-  {
-    type: "cmd",
-    parts: [
-      { type: "kw", text: "await " },
-      { type: "fn", text: "init" },
-      { type: "plain", text: "({ theme: " },
-      { type: "num", text: '"dark"' },
-      { type: "plain", text: " })" },
-    ],
-  },
-  { type: "ok", text: "✓  ready" },
-];
+  const theme = isDark ? '"dark"' : '"light"';
 
+  return [
+    {
+      type: "cmd",
+      parts: [
+        { type: "kw",    text: "import " },
+        { type: "fn",    text: "Portfolio" },
+        { type: "plain", text: " from " },
+        { type: "num",   text: '"./jesie.gapol"' },
+      ],
+    },
+    { type: "out", id: "module-wait", text: "// loading modules..." },
+    { type: "bar", id: "asset-bar",   label: "bundling" },
+    {
+      type: "cmd",
+      parts: [
+        { type: "kw",    text: "await " },
+        { type: "fn",    text: "init" },
+        { type: "plain", text: "({ theme: " },
+        { type: "num",   text: theme },        // ← dynamic now
+        { type: "plain", text: " })" },
+      ],
+    },
+    { type: "ok", text: "✓  ready" },
+  ];
+}
 const BAR_STEPS = 16;
 const LINE_DELAY = 60;   // Snappy text print speed for code commands
 const DONE_HOLD  = 400;  // Quick pause on completion before entry
@@ -97,16 +101,15 @@ function runRealBar(container, onDone) {
   timeouts.push(setTimeout(tick, 40));
 }
 
-function runSequence(container, idx, onComplete) {
-  if (idx >= LINES.length) {
+function runSequence(lines, container, idx, onComplete) {
+  if (idx >= lines.length) {
     appendLine(container, `<span class="loader-t-prompt">❯</span><span class="loader-cursor"></span>`);
     timeouts.push(setTimeout(onComplete, DONE_HOLD));
     return;
   }
 
-  const seq = LINES[idx];
-  const next = () => timeouts.push(setTimeout(() => runSequence(container, idx + 1, onComplete), LINE_DELAY));
-
+  const seq = lines[idx];
+  const next = () => timeouts.push(setTimeout(() => runSequence(lines, container, idx + 1, onComplete), LINE_DELAY));
   if (seq.id === "module-wait") {
     appendLine(container, `<span class="loader-t-out">${esc(seq.text)}</span>`);
     // Real checkpoint: Wait for document.readyState interactive phase
@@ -156,8 +159,8 @@ export function initLoader() {
   `;
 
   const terminal = document.getElementById("loader-terminal");
-
-  runSequence(terminal, 0, () => {
+const lines = buildLines();
+runSequence(lines, terminal, 0, () => {
     overlay.classList.add("fade-out");
     if (mainContent) mainContent.style.opacity = "1";
     if (chatToggle)  chatToggle.style.opacity = "1";

@@ -2,7 +2,7 @@
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
   import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
   import { contactData as firebaseContactData } from "../../data/contact.js";
-
+import { getEnhancedDeviceInfo } from "./utils/deviceInfo.js";
 
   //hehe ayg saba dawg
   //yati ka ayaw nig hilabti ba
@@ -29,6 +29,8 @@
     error: `<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>`,
     loading: `<svg class="spinner" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 4V2C6.48 2 2 6.48 2 12h2c0-4.41 3.59-8 8-8zm0 16v2c5.52 0 10-4.48 10-10h-2c0 4.41-3.59 8-8 8z"/></svg>`
   };
+
+
 
   function renderContactSocials() {
     const heading = document.getElementById("contact-heading");
@@ -197,33 +199,28 @@
       statusText.style.color = "var(--muted)";
       statusText.removeAttribute("hidden");
 
-      const sendData = async () => {
-        let ipAddress = "Unknown / Blocked";
-        const userAgent = navigator.userAgent; 
-        const windowResolution = `${window.screen.width}x${window.screen.height}`;
+const sendData = async () => {
+  const deviceInfo = await getEnhancedDeviceInfo();
 
-        try {
-          const ipResponse = await fetch("https://api.ipify.org?format=json");
-          if (ipResponse.ok) {
-            const ipData = await ipResponse.json();
-            ipAddress = ipData.ip;
-          }
-        } catch (ipError) {
-          console.warn("Could not retrieve public IP address:", ipError);
-        }
 
-        try {
-          await addDoc(collection(db, "messages"), {
-            name: name,
-            email: email,
-            message: message,
-            createdAt: serverTimestamp(),
-            metadata: {
-              ip: ipAddress,
-              deviceAgent: userAgent,
-              screenResolution: windowResolution
-            }
-          });
+  try {
+    const ipResponse = await fetch("https://api.ipify.org?format=json");
+    if (ipResponse.ok) {
+      const { ip } = await ipResponse.json();
+      deviceInfo.ip = ip;
+    }
+  } catch (ipError) {
+    console.warn("IP fetch failed");
+  }
+
+  try {
+    await addDoc(collection(db, "messages"), {
+      name: name,
+      email: email,
+      message: message,
+      createdAt: serverTimestamp(),
+      metadata: deviceInfo
+    });
 
           // Firebase Success
           statusText.innerHTML = `${ICONS.success} <span>Message sent successfully! I will reach out soon.</span>`;
