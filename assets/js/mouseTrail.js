@@ -1,5 +1,6 @@
 
 (function initCodeRain() {
+   if ('ontouchstart' in window || navigator.maxTouchPoints > 0) return;
   const canvas = document.createElement('canvas');
   canvas.id = 'interaction-canvas';
   Object.assign(canvas.style, {
@@ -108,15 +109,7 @@
   window.addEventListener('mousemove', e => onMove(e.clientX, e.clientY));
   window.addEventListener('click', e => onClick(e.clientX, e.clientY));
 
-  // Touch support
-  window.addEventListener('touchmove', e => {
-    const t = e.touches[0];
-    onMove(t.clientX, t.clientY);
-  }, { passive: true });
-  window.addEventListener('touchstart', e => {
-    const t = e.touches[0];
-    onClick(t.clientX, t.clientY);
-  }, { passive: true });
+ 
 
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
