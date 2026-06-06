@@ -4,10 +4,6 @@
   min-height: 90vh;
   display: flex;
   align-items: center;
-
-  /* Explicitly overwrite the vertical padding directly */
-  /* padding-top: 20px;
-  padding-bottom: 0px; */
 }
 
 .hero-container {
@@ -25,43 +21,139 @@
   align-items: flex-start;
 }
 
-.hero-greeting {
-  font-size: 1.1rem;
-  font-weight: 500;
+/* Status pill */
+.hero-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
   color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 5px 14px;
+  margin-bottom: 22px;
+  letter-spacing: 0.02em;
 }
 
+.hero-status-dot {
+  width: 7px;
+  height: 7px;
+  background: #3ddc84;
+  animation: hero-pulse 2s ease infinite;
+  flex-shrink: 0;
+}
+
+@keyframes hero-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* Title */
 .hero-title {
-  font-size: clamp(1rem, 4vw, 3rem);
+  font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 600;
-  line-height: 1.05;
+  line-height: 1.15;
   color: var(--dark);
-  letter-spacing: -1px;
-  margin-top: 4px;
+  letter-spacing: -0.025em;
+  margin-bottom: 10px;
   font-family: var(--font-title);
 }
 
-.hero-role {
-  margin-top: 12px;
+.hero-title-accent {
   color: var(--accent);
-  font-weight: 700;
-  letter-spacing: 2px;
 }
 
+.hero-title-dim {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+/* Role line */
+.hero-role {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  margin-bottom: 16px;
+}
+
+.role-sep {
+  color: var(--accent);
+  opacity: 0.5;
+}
+
+.role-stack {
+  color: var(--muted);
+}
+
+/* Description */
 .hero-description {
-  margin-top: 18px;
-  max-width: 580px;
+  margin-top: 6px;
+  max-width: 520px;
   line-height: 1.8;
   color: var(--muted);
+}
+
+.hero-description strong {
+  color: var(--dark);
+  font-weight: 500;
 }
 
 /* ── CTA Buttons ───────────────────────────────── */
 
 .hero-actions {
   display: flex;
-  gap: 16px;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+/* ── Stats strip ────────────────────────────────── */
+
+.hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 24px;
   margin-top: 32px;
-  /* flex-wrap: wrap; */
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  width: 100%;
+}
+
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.hero-stat-num {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--dark);
+  letter-spacing: -0.02em;
+  font-family: var(--font-title);
+}
+
+.hero-stat-label {
+  font-size: 0.7rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.hero-stat-divider {
+  width: 1px;
+  height: 32px;
+  background: var(--border);
+  flex-shrink: 0;
 }
 
 /* ── Avatar ─────────────────────────────────────── */
@@ -71,27 +163,43 @@
   justify-content: center;
 }
 
-/* ── sharp Avatar Frame ───────────────────────────── */
-
 .avatar-frame {
-  width: 420px;
+  width: 400px;
   height: 420px;
   background: var(--surface);
+  border: 1px solid var(--border);
   position: relative;
+  overflow: hidden;
   z-index: 8;
-
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Image styling */
 .avatar-frame img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center bottom;
+  object-position: center top;
   display: block;
-  position: relative;
-  z-index: 6;
+}
+
+/* Badge pinned to bottom-right of avatar */
+.avatar-badge {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 7px 12px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--muted);
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.avatar-badge-hi {
+  color: var(--accent);
 }
