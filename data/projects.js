@@ -376,7 +376,20 @@ export const projects = [
     githubUrl:   'https://github.com/jcgpl-dev/StoreMate',
     liveUrl:     null,
   },
-
+ {
+    title:       'Peso Path - Budgeting App',
+    description: 'Peso Path is an offline-first personal budgeting and expense tracking mobile application built with Flutter. It helps users manage their finances by tracking expenses, monitoring budgets, setting savings goals, and calculating a safe daily spending limit based on available funds.',
+    image: 'assets/images/projects/peso_path/cover.png',
+   images: [
+  // 1. App Startup & Authentication
+  'assets/images/projects/peso_path/splash.png',
+  'assets/images/projects/peso_path/login.png',
+'assets/images/projects/peso_path/register.png',
+],
+    techStack:   ['Flutter', 'Dart', 'SQLite'],
+    githubUrl:   'https://github.com/jcgpl-dev/peso_path',
+    liveUrl:     null,
+  },
    {
     title:       'Tarpaulin Design',
     description: 'Designed Tarpaulin layouts using adobe photoshop.',
