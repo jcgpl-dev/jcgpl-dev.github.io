@@ -385,7 +385,11 @@ export const projects = [
   'assets/images/projects/peso_path/splash.png',
   'assets/images/projects/peso_path/login.png',
      'assets/images/projects/peso_path/register.png',
-'assets/images/projects/peso_path/home.png',
+     'assets/images/projects/peso_path/home.png',
+     'assets/images/projects/peso_path/dashboard-empty.png',
+     'assets/images/projects/peso_path/buget_setup.png', 
+       'assets/images/projects/peso_path/add_transaction.png'
+
 ],
     techStack:   ['Flutter', 'Dart', 'SQLite'],
     githubUrl:   'https://github.com/jcgpl-dev/peso_path',
