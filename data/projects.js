@@ -379,21 +379,39 @@ export const projects = [
   {
     title: 'Peso Path - Budgeting App',
     description: 'Peso Path is an offline-first personal budgeting and expense tracking mobile application built with Flutter. It helps users manage their finances by tracking expenses, monitoring budgets, setting savings goals, and calculating a safe daily spending limit based on available funds.',
-    image: 'assets/images/projects/peso_path/cover.png',
-    images: [
-      // 1. App Startup & Authentication
-      'assets/images/projects/peso_path/splash.png',
-      'assets/images/projects/peso_path/login.png',
-      'assets/images/projects/peso_path/register.png',
-      'assets/images/projects/peso_path/home.png',
-      'assets/images/projects/peso_path/dashboard-empty.png',
-      'assets/images/projects/peso_path/buget_setup.png',
-      'assets/images/projects/peso_path/add_transaction.png'
+    image: 'assets/images/projects/peso_path/cover2.png',
+   images: [
+  // 1. App Startup & Authentication
+  'assets/images/projects/peso_path/splash.png',
+  'assets/images/projects/peso_path/login.png',
+  'assets/images/projects/peso_path/register.png',
 
-    ],
+  // 2. Core Dashboard & Setup
+  'assets/images/projects/peso_path/home.png',
+  'assets/images/projects/peso_path/buget_setup.png',
+  'assets/images/projects/peso_path/budget_edit.png',
+
+  // 3. Transactions & Management
+     'assets/images/projects/peso_path/add_expense.png',
+    'assets/images/projects/peso_path/add_income.png',
+  'assets/images/projects/peso_path/edit_transaction.png',
+  
+
+
+  // 4. Savings & Goals
+  'assets/images/projects/peso_path/savings_goal.png',
+  'assets/images/projects/peso_path/add_goal.png',
+  'assets/images/projects/peso_path/add_deposit.png',
+
+  // 5. User Profile & Settings
+  'assets/images/projects/peso_path/profile.png',
+  'assets/images/projects/peso_path/settings.png',
+  'assets/images/projects/peso_path/about_us.png',
+  'assets/images/projects/peso_path/about_dev.png'
+],
     techStack: ['Flutter', 'Dart', 'SQLite'],
     githubUrl: 'https://github.com/jcgpl-dev/peso_path',
-    liveUrl: 'https://drive.google.com/drive/folders/1C-e3ZC6Vh1GyttVtJVQ86QuyXRbRGCEP?usp=drive_link',
+    liveUrl: 'https://drive.google.com/file/d/1qY517xcxQoaWD-Gcky_Yl61gXMAPXkCy/view?usp=drive_link',
   },
   {
     title: 'Tarpaulin Design',
