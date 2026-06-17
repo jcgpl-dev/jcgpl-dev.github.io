@@ -104,76 +104,76 @@ void invLfsrMixColumns(Uint8List state) {
 
 export const projects = [
   {
-    title:       'Cloud-based Vehicle Monitoring System - Desktop App',
+    title: 'Cloud-based Vehicle Monitoring System - Desktop App',
     description: 'A Flutter-based vehicle monitoring system using QR codes and Firebase Firestore for real-time tracking and AES-encrypted payloads designed for JRMSU - KC CDRRMSU.',
     image: 'assets/images/projects/cvms/cover.png',
-   images: [
+    images: [
 
-     'assets/images/projects/cvms/login.png',
-  'assets/images/projects/cvms/register.png',
-  'assets/images/projects/cvms/forgot_pass.png',
-  'assets/images/projects/cvms/email_sent.png',
-
-
-     'assets/images/projects/cvms/dashboard.png',
-     'assets/images/projects/cvms/dashboard_light.png',
-         'assets/images/projects/cvms/dashboard_light_sidebar_collapsed.png',
-     'assets/images/projects/cvms/dashboard_scrolled.png',
-  'assets/images/projects/cvms/individual_vehicle_dashboard.png',
-   'assets/images/projects/cvms/custom_date_reporting.png',
-  'assets/images/projects/cvms/pdf_report_preview.png',
-  'assets/images/projects/cvms/vehicle_by_college.png',
-     'assets/images/projects/cvms/vehicle_by_year_level.png',
-  'assets/images/projects/cvms/students_by_violation_share.png',
+      'assets/images/projects/cvms/login.png',
+      'assets/images/projects/cvms/register.png',
+      'assets/images/projects/cvms/forgot_pass.png',
+      'assets/images/projects/cvms/email_sent.png',
 
 
-  
-  'assets/images/projects/cvms/vehicle_monitoring.png',
-    'assets/images/projects/cvms/monitoring_vehicle_info.png',
-  'assets/images/projects/cvms/vehicle_logs.png',
-  'assets/images/projects/cvms/vehicle_logs_bulk_mode.png',
+      'assets/images/projects/cvms/dashboard.png',
+      'assets/images/projects/cvms/dashboard_light.png',
+      'assets/images/projects/cvms/dashboard_light_sidebar_collapsed.png',
+      'assets/images/projects/cvms/dashboard_scrolled.png',
+      'assets/images/projects/cvms/individual_vehicle_dashboard.png',
+      'assets/images/projects/cvms/custom_date_reporting.png',
+      'assets/images/projects/cvms/pdf_report_preview.png',
+      'assets/images/projects/cvms/vehicle_by_college.png',
+      'assets/images/projects/cvms/vehicle_by_year_level.png',
+      'assets/images/projects/cvms/students_by_violation_share.png',
 
 
-  
-     'assets/images/projects/cvms/vehicle_management.png',
-    'assets/images/projects/cvms/mvp_preview.png',
-  'assets/images/projects/cvms/vehicle_info.png',
-  'assets/images/projects/cvms/edit_vehicle_info.png',
-     'assets/images/projects/cvms/expiring_vehicles.png',
-  
-  'assets/images/projects/cvms/violation_management.png',
-  'assets/images/projects/cvms/violation_empty_state.png',
-  'assets/images/projects/cvms/sanction_management.png',
+
+      'assets/images/projects/cvms/vehicle_monitoring.png',
+      'assets/images/projects/cvms/monitoring_vehicle_info.png',
+      'assets/images/projects/cvms/vehicle_logs.png',
+      'assets/images/projects/cvms/vehicle_logs_bulk_mode.png',
 
 
-  'assets/images/projects/cvms/user_management.png',
-  'assets/images/projects/cvms/add_user.png',
-  'assets/images/projects/cvms/edit_user.png',
-  'assets/images/projects/cvms/activity_logs.png',
-  'assets/images/projects/cvms/activity_details.png',
+
+      'assets/images/projects/cvms/vehicle_management.png',
+      'assets/images/projects/cvms/mvp_preview.png',
+      'assets/images/projects/cvms/vehicle_info.png',
+      'assets/images/projects/cvms/edit_vehicle_info.png',
+      'assets/images/projects/cvms/expiring_vehicles.png',
+
+      'assets/images/projects/cvms/violation_management.png',
+      'assets/images/projects/cvms/violation_empty_state.png',
+      'assets/images/projects/cvms/sanction_management.png',
 
 
-  'assets/images/projects/cvms/profile.png',
-     'assets/images/projects/cvms/settings.png',
-   
-  'assets/images/projects/cvms/pdf_report_branding.png',
+      'assets/images/projects/cvms/user_management.png',
+      'assets/images/projects/cvms/add_user.png',
+      'assets/images/projects/cvms/edit_user.png',
+      'assets/images/projects/cvms/activity_logs.png',
+      'assets/images/projects/cvms/activity_details.png',
 
-     'assets/images/projects/cvms/custom_login_background_image.png',
-  'assets/images/projects/cvms/login_custom_bg_image.png',
-  
-     'assets/images/projects/cvms/custom_sidebar_theme.png',
-    'assets/images/projects/cvms/logout.png',
-],
-    techStack:   ['Flutter', 'Dart', 'Firebase Auth', 'Cloud Firestore', 'Bloc', 'AES'],
-    caseStudy:   cvmsCaseStudy,
-    githubUrl:   null,
-    liveUrl:     null,
+
+      'assets/images/projects/cvms/profile.png',
+      'assets/images/projects/cvms/settings.png',
+
+      'assets/images/projects/cvms/pdf_report_branding.png',
+
+      'assets/images/projects/cvms/custom_login_background_image.png',
+      'assets/images/projects/cvms/login_custom_bg_image.png',
+
+      'assets/images/projects/cvms/custom_sidebar_theme.png',
+      'assets/images/projects/cvms/logout.png',
+    ],
+    techStack: ['Flutter', 'Dart', 'Firebase Auth', 'Cloud Firestore', 'Bloc', 'AES'],
+    caseStudy: cvmsCaseStudy,
+    githubUrl: null,
+    liveUrl: null,
   },
   {
-    title:       'Cloud-based Vehicle Monitoring System - Mobile App',
+    title: 'Cloud-based Vehicle Monitoring System - Mobile App',
     description: 'A Flutter-based vehicle monitoring system using QR codes and Firebase Firestore for real-time tracking and AES-encrypted payloads designed for JRMSU - KC CDRRMSU.',
     image: 'assets/images/projects/cvms/mobile/cover.png',
-    images:      [
+    images: [
       'assets/images/projects/cvms/mobile/splash.png',
       'assets/images/projects/cvms/mobile/login.png',
       'assets/images/projects/cvms/mobile/home.png',
@@ -191,13 +191,13 @@ export const projects = [
       'assets/images/projects/cvms/mobile/drawer.png',
 
     ],
-    techStack:   ['Flutter', 'Dart', 'Firebase Auth', 'Cloud Firestore', 'Bloc', 'AES'],
-    caseStudy:   cvmsCaseStudy,
-    githubUrl:   null,
-    liveUrl:     null,
+    techStack: ['Flutter', 'Dart', 'Firebase Auth', 'Cloud Firestore', 'Bloc', 'AES'],
+    caseStudy: cvmsCaseStudy,
+    githubUrl: null,
+    liveUrl: null,
   },
-    {
-    title:       'JRMSU CCS Dean\'s Office Visitors Log System - Mobile App',
+  {
+    title: 'JRMSU CCS Dean\'s Office Visitors Log System - Mobile App',
     description: 'A QR-based visitor registration and log system for JRMSU CCS, built with Flutter and Firebase for real-time visitor tracking.',
     image: 'assets/images/projects/cvls/mobile/mobile-cover.png',
     images: [
@@ -214,60 +214,60 @@ export const projects = [
       'assets/images/projects/cvls/mobile/info.png',
       'assets/images/projects/cvls/mobile/logout.png',
     ],
-    techStack:   ['Flutter', 'Dart', 'Firebase'],
-    githubUrl:   null,
-    liveUrl:     null,
+    techStack: ['Flutter', 'Dart', 'Firebase'],
+    githubUrl: null,
+    liveUrl: null,
   },
   {
-    title:       'JRMSU CCS Dean\'s Office Visitors Log System - Desktop App',
+    title: 'JRMSU CCS Dean\'s Office Visitors Log System - Desktop App',
     description: 'A QR-based visitor registration and log system for JRMSU CCS, built with Flutter and Firebase for real-time visitor tracking.',
     image: 'assets/images/projects/cvls/cover.png',
-   images: [
+    images: [
 
-  'assets/images/projects/cvls/login.png',
-     'assets/images/projects/cvls/dashboard.png',
-    'assets/images/projects/cvls/manual_add_visitor.png',
-  
-  'assets/images/projects/cvls/visitors_log.png',
-  'assets/images/projects/cvls/visitors_log_date_filter.png',
-  'assets/images/projects/cvls/visitor_empty_search_result.png',
-  'assets/images/projects/cvls/add_visitor.png',
+      'assets/images/projects/cvls/login.png',
+      'assets/images/projects/cvls/dashboard.png',
+      'assets/images/projects/cvls/manual_add_visitor.png',
 
-  'assets/images/projects/cvls/edit_visitor.png',
-  'assets/images/projects/cvls/delete_visitor.png',
-  'assets/images/projects/cvls/pdf_report_preview.png',
-  'assets/images/projects/cvls/analytics_report.png',
-  'assets/images/projects/cvls/qr_code_management.png',
-  'assets/images/projects/cvls/qr_codes.png',
-   'assets/images/projects/cvls/office_hours.png',
-  'assets/images/projects/cvls/settings.png',
-  
-   'assets/images/projects/cvls/logout.png',
-],
-    techStack:   ['Flutter', 'Dart', 'Firebase'],
-    githubUrl:   null,
-    liveUrl:     null,
+      'assets/images/projects/cvls/visitors_log.png',
+      'assets/images/projects/cvls/visitors_log_date_filter.png',
+      'assets/images/projects/cvls/visitor_empty_search_result.png',
+      'assets/images/projects/cvls/add_visitor.png',
+
+      'assets/images/projects/cvls/edit_visitor.png',
+      'assets/images/projects/cvls/delete_visitor.png',
+      'assets/images/projects/cvls/pdf_report_preview.png',
+      'assets/images/projects/cvls/analytics_report.png',
+      'assets/images/projects/cvls/qr_code_management.png',
+      'assets/images/projects/cvls/qr_codes.png',
+      'assets/images/projects/cvls/office_hours.png',
+      'assets/images/projects/cvls/settings.png',
+
+      'assets/images/projects/cvls/logout.png',
+    ],
+    techStack: ['Flutter', 'Dart', 'Firebase'],
+    githubUrl: null,
+    liveUrl: null,
   },
   {
-    title:       'Gapz Graphics Portfolio Website',
+    title: 'Gapz Graphics Portfolio Website',
     description: 'A personal graphic design portfolio website showcasing branding and visual design work.',
     image: 'assets/images/projects/portfolio/gapz_graphix.png',
-    images:      [
+    images: [
       'assets/images/projects/portfolio/gapz_graphix1.png',
       'assets/images/projects/portfolio/gapz_graphix.png',
       'assets/images/projects/portfolio/gapz_graphix2.png',
       'assets/images/projects/portfolio/gapz_graphix3.png',
       'assets/images/projects/portfolio/gapz_graphix4.png',
     ],
-    techStack:   ['HTML', 'CSS', 'JavaScript'],
-    githubUrl:   null,
-    liveUrl:     'https://jesiegapol23.github.io/gapzgraphix',
+    techStack: ['HTML', 'CSS', 'JavaScript'],
+    githubUrl: null,
+    liveUrl: 'https://jesiegapol23.github.io/gapzgraphix',
   },
   {
-    title:       'Records Management System - Desktop App',
+    title: 'Records Management System - Desktop App',
     description: 'Contributed and assisted the development of an offline support records management system for JRMSU - Records Office during On-JOb-Training (OJT) days.',
     image: 'assets/images/projects/records/login.png',
-    images:      [
+    images: [
       'assets/images/projects/records/login.png',
       'assets/images/projects/records/signup.png',
       'assets/images/projects/records/dashboard.png',
@@ -279,133 +279,133 @@ export const projects = [
       'assets/images/projects/records/add.png',
       'assets/images/projects/records/delete.png',
       'assets/images/projects/records/docs.png',
-'assets/images/projects/records/report_and_analytics.png',
-    
+      'assets/images/projects/records/report_and_analytics.png',
+
       'assets/images/projects/records/report.png',
-        'assets/images/projects/records/activity.png',
+      'assets/images/projects/records/activity.png',
       'assets/images/projects/records/profile.png',
-            'assets/images/projects/records/about.png',
+      'assets/images/projects/records/about.png',
     ],
-    techStack:   ['Flutter', 'Dart', 'SQLite'],
-    githubUrl:   null,
-    liveUrl:     null,
+    techStack: ['Flutter', 'Dart', 'SQLite'],
+    githubUrl: null,
+    liveUrl: null,
   },
 
   {
-    title:       'Messenger Clone',
-    description:  'A modern messaging app UI/UX case study inspired by Messenger, featuring onboarding flows, customizable chat themes, authentication screens, notifications, and interactive chat interfaces built with Flutter.',
+    title: 'Messenger Clone',
+    description: 'A modern messaging app UI/UX case study inspired by Messenger, featuring onboarding flows, customizable chat themes, authentication screens, notifications, and interactive chat interfaces built with Flutter.',
     image: 'assets/images/projects/messenger-clone/cover.png',
-    images:      [
+    images: [
       'assets/images/projects/messenger-clone/login.png',
-      
+
       'assets/images/projects/messenger-clone/onboarding-1.png',
       'assets/images/projects/messenger-clone/find_acc.png',
       'assets/images/projects/messenger-clone/name.png',
-         'assets/images/projects/messenger-clone/user_name.png',
+      'assets/images/projects/messenger-clone/user_name.png',
       'assets/images/projects/messenger-clone/gender.png',
-       'assets/images/projects/messenger-clone/b-day.png',
+      'assets/images/projects/messenger-clone/b-day.png',
       'assets/images/projects/messenger-clone/birthday.png',
-          'assets/images/projects/messenger-clone/email.png',
+      'assets/images/projects/messenger-clone/email.png',
       'assets/images/projects/messenger-clone/password.png',
-        'assets/images/projects/messenger-clone/terms.png',
+      'assets/images/projects/messenger-clone/terms.png',
       'assets/images/projects/messenger-clone/chats.png',
       'assets/images/projects/messenger-clone/cool-crew-theme.png',
       'assets/images/projects/messenger-clone/avatar-theme.png',
-         'assets/images/projects/messenger-clone/theme-selection.png',
+      'assets/images/projects/messenger-clone/theme-selection.png',
       'assets/images/projects/messenger-clone/quick-reactions.png',
-              
+
       'assets/images/projects/messenger-clone/chat-info.png',
-           'assets/images/projects/messenger-clone/stories.png',
+      'assets/images/projects/messenger-clone/stories.png',
       'assets/images/projects/messenger-clone/notifs.png',
       'assets/images/projects/messenger-clone/menu.png',
-             'assets/images/projects/messenger-clone/update_acc.png',
+      'assets/images/projects/messenger-clone/update_acc.png',
     ],
-    techStack:   ['Flutter', 'Dart', 'Firebase'],
-    githubUrl:   null,
-    liveUrl:     null,
+    techStack: ['Flutter', 'Dart', 'Firebase'],
+    githubUrl: null,
+    liveUrl: null,
   },
-  
+
   {
-    title:       'Storemate - Mobile App',
+    title: 'Storemate - Mobile App',
     description: 'StoreMate is a companion app designed for small shops and convenience stores.',
     image: 'assets/images/projects/store_mate/dashboard_cover.png',
-   images: [
-  // 1. App Startup & Authentication
-  'assets/images/projects/store_mate/splash.png',
-  'assets/images/projects/store_mate/login.png',
-  'assets/images/projects/store_mate/register.png',
-  'assets/images/projects/store_mate/forgot_password.png',
-  'assets/images/projects/store_mate/email_sent.png',
+    images: [
+      // 1. App Startup & Authentication
+      'assets/images/projects/store_mate/splash.png',
+      'assets/images/projects/store_mate/login.png',
+      'assets/images/projects/store_mate/register.png',
+      'assets/images/projects/store_mate/forgot_password.png',
+      'assets/images/projects/store_mate/email_sent.png',
 
-  // 2. Core Hub / Dashboard
-  'assets/images/projects/store_mate/dashboard.png',
-  'assets/images/projects/store_mate/best_selling_items.png',
-  'assets/images/projects/store_mate/sales.png',
+      // 2. Core Hub / Dashboard
+      'assets/images/projects/store_mate/dashboard.png',
+      'assets/images/projects/store_mate/best_selling_items.png',
+      'assets/images/projects/store_mate/sales.png',
 
-  // 3. Products Management
-  'assets/images/projects/store_mate/products.png',
-  'assets/images/projects/store_mate/product_details.png',
-  'assets/images/projects/store_mate/add_product.png',
-  'assets/images/projects/store_mate/edit_product.png',
-  'assets/images/projects/store_mate/restock.png',
+      // 3. Products Management
+      'assets/images/projects/store_mate/products.png',
+      'assets/images/projects/store_mate/product_details.png',
+      'assets/images/projects/store_mate/add_product.png',
+      'assets/images/projects/store_mate/edit_product.png',
+      'assets/images/projects/store_mate/restock.png',
 
-  // 4. Cart & Checkout Workflow
-  'assets/images/projects/store_mate/cart_selection.png',
-  'assets/images/projects/store_mate/cart.png',
-  'assets/images/projects/store_mate/add_cart.png',
-  'assets/images/projects/store_mate/confirm_checkout.png',
-  'assets/images/projects/store_mate/check_out_receipt.png',
+      // 4. Cart & Checkout Workflow
+      'assets/images/projects/store_mate/cart_selection.png',
+      'assets/images/projects/store_mate/cart.png',
+      'assets/images/projects/store_mate/add_cart.png',
+      'assets/images/projects/store_mate/confirm_checkout.png',
+      'assets/images/projects/store_mate/check_out_receipt.png',
 
-  // 5. Customers Management
-  'assets/images/projects/store_mate/customers.png',
-  'assets/images/projects/store_mate/add_customer.png',
-  'assets/images/projects/store_mate/edit_customer.png',
+      // 5. Customers Management
+      'assets/images/projects/store_mate/customers.png',
+      'assets/images/projects/store_mate/add_customer.png',
+      'assets/images/projects/store_mate/edit_customer.png',
 
-  // 6. Expenses Management
-  'assets/images/projects/store_mate/expenses.png',
-  'assets/images/projects/store_mate/expense_details.png',
-  'assets/images/projects/store_mate/add_expense.png',
+      // 6. Expenses Management
+      'assets/images/projects/store_mate/expenses.png',
+      'assets/images/projects/store_mate/expense_details.png',
+      'assets/images/projects/store_mate/add_expense.png',
 
-  // 7. Profile, Settings & App Info
-  'assets/images/projects/store_mate/profile.png',
-  'assets/images/projects/store_mate/edit_profile.png',
-  'assets/images/projects/store_mate/about.png',
-  'assets/images/projects/store_mate/date_picker.png',
-],
-    techStack:   ['Kotlin', 'XML', 'Firebase'],
-    githubUrl:   'https://github.com/jcgpl-dev/StoreMate',
-    liveUrl:     null,
+      // 7. Profile, Settings & App Info
+      'assets/images/projects/store_mate/profile.png',
+      'assets/images/projects/store_mate/edit_profile.png',
+      'assets/images/projects/store_mate/about.png',
+      'assets/images/projects/store_mate/date_picker.png',
+    ],
+    techStack: ['Kotlin', 'XML', 'Firebase'],
+    githubUrl: 'https://github.com/jcgpl-dev/StoreMate',
+    liveUrl: null,
   },
- {
-    title:       'Peso Path - Budgeting App',
+  {
+    title: 'Peso Path - Budgeting App',
     description: 'Peso Path is an offline-first personal budgeting and expense tracking mobile application built with Flutter. It helps users manage their finances by tracking expenses, monitoring budgets, setting savings goals, and calculating a safe daily spending limit based on available funds.',
     image: 'assets/images/projects/peso_path/cover.png',
-   images: [
-  // 1. App Startup & Authentication
-  'assets/images/projects/peso_path/splash.png',
-  'assets/images/projects/peso_path/login.png',
-     'assets/images/projects/peso_path/register.png',
-     'assets/images/projects/peso_path/home.png',
-     'assets/images/projects/peso_path/dashboard-empty.png',
-     'assets/images/projects/peso_path/buget_setup.png', 
-       'assets/images/projects/peso_path/add_transaction.png'
+    images: [
+      // 1. App Startup & Authentication
+      'assets/images/projects/peso_path/splash.png',
+      'assets/images/projects/peso_path/login.png',
+      'assets/images/projects/peso_path/register.png',
+      'assets/images/projects/peso_path/home.png',
+      'assets/images/projects/peso_path/dashboard-empty.png',
+      'assets/images/projects/peso_path/buget_setup.png',
+      'assets/images/projects/peso_path/add_transaction.png'
 
-],
-    techStack:   ['Flutter', 'Dart', 'SQLite'],
-    githubUrl:   'https://github.com/jcgpl-dev/peso_path',
-    liveUrl:     null,
-  },
-   {
-    title:       'Tarpaulin Design',
-    description: 'Designed Tarpaulin layouts using adobe photoshop.',
-    image:       'assets/images/projects/graphics/tarp-design.png',
-    images:      [
-      'assets/images/projects/graphics/tarp-design.png',
-     
     ],
-    techStack:   ['Adobe Photoshop'],
-    githubUrl:   null,
-    liveUrl:     null,
+    techStack: ['Flutter', 'Dart', 'SQLite'],
+    githubUrl: 'https://github.com/jcgpl-dev/peso_path',
+    liveUrl: 'https://drive.google.com/drive/folders/1C-e3ZC6Vh1GyttVtJVQ86QuyXRbRGCEP?usp=drive_link',
+  },
+  {
+    title: 'Tarpaulin Design',
+    description: 'Designed Tarpaulin layouts using adobe photoshop.',
+    image: 'assets/images/projects/graphics/tarp-design.png',
+    images: [
+      'assets/images/projects/graphics/tarp-design.png',
+
+    ],
+    techStack: ['Adobe Photoshop'],
+    githubUrl: null,
+    liveUrl: null,
   },
   // {
   //   title:       'JRMSU K Sports Fest 2026 — CCS Basketball Jersey Design',
@@ -420,39 +420,39 @@ export const projects = [
   //   githubUrl:   null,
   //   liveUrl:     null,
   // },
-    {
-    title:       'JRMSU K Sports Fest 2026 — Shirt Design I',
+  {
+    title: 'JRMSU K Sports Fest 2026 — Shirt Design I',
     description: 'Shirt design contribution for JRMSU K Sports Fest 2026, created using Adobe Photoshop and Illustrator.',
-    image:       'assets/images/projects/graphics/design1.png',
-    images:      [
+    image: 'assets/images/projects/graphics/design1.png',
+    images: [
       'assets/images/projects/graphics/design1.png',
       'assets/images/projects/graphics/design2.png',
       'assets/images/projects/graphics/design3.png',
     ],
-    techStack:   ['Adobe Photoshop', 'Adobe Illustrator'],
-    githubUrl:   null,
-    liveUrl:     null,
-  },
-   {
-    title:       'Storemate Figma Design',
-    description: 'A comprehensive UI/UX design for a modern retail and inventory management ecosystem, focusing on user workflows, clean data presentation, and intuitive navigation for a mobile application tailored to small business needs.',
-    image:        'assets/images/projects/figma_design_storemate/cover.png',
-    images:      [
-      'assets/images/projects/figma_design_storemate/cover.png',
-    ],
-    techStack:   [ 'Figma'],
-    githubUrl:   null,
-    liveUrl:     null,
+    techStack: ['Adobe Photoshop', 'Adobe Illustrator'],
+    githubUrl: null,
+    liveUrl: null,
   },
   {
-    title:       'CVMS Figma Design',
+    title: 'Storemate Figma Design',
+    description: 'A comprehensive UI/UX design for a modern retail and inventory management ecosystem, focusing on user workflows, clean data presentation, and intuitive navigation for a mobile application tailored to small business needs.',
+    image: 'assets/images/projects/figma_design_storemate/cover.png',
+    images: [
+      'assets/images/projects/figma_design_storemate/cover.png',
+    ],
+    techStack: ['Figma'],
+    githubUrl: null,
+    liveUrl: null,
+  },
+  {
+    title: 'CVMS Figma Design',
     description: 'A high-fidelity dashboard and tracking system interface designed for a Cloud-based Vehicle Monitoring System (CVMS), emphasizing administrative control and accessible UX.',
-    image:        'assets/images/projects/figma_design_cvms/cover.png',
-    images:      [
+    image: 'assets/images/projects/figma_design_cvms/cover.png',
+    images: [
       'assets/images/projects/figma_design_cvms/cover.png', // Fixed directory typo here
     ],
-    techStack:   [ 'Figma'],
-    githubUrl:   null,
-    liveUrl:     null,
+    techStack: ['Figma'],
+    githubUrl: null,
+    liveUrl: null,
   },
 ];
