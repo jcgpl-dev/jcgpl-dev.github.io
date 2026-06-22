@@ -387,7 +387,9 @@ export const projects = [
   'assets/images/projects/peso_path/register.png',
 
   // 2. Core Dashboard & Setup
-  'assets/images/projects/peso_path/home.png',
+     'assets/images/projects/peso_path/home.png',
+     'assets/images/projects/peso_path/home-dark.png',
+    'assets/images/projects/peso_path/transactions.png',
   'assets/images/projects/peso_path/buget_setup.png',
   'assets/images/projects/peso_path/budget_edit.png',
 
@@ -404,7 +406,8 @@ export const projects = [
   'assets/images/projects/peso_path/add_deposit.png',
 
   // 5. User Profile & Settings
-  'assets/images/projects/peso_path/profile.png',
+     'assets/images/projects/peso_path/profile.png',
+  'assets/images/projects/peso_path/switch-profile.png',
   'assets/images/projects/peso_path/settings.png',
   'assets/images/projects/peso_path/about_us.png',
   'assets/images/projects/peso_path/about_dev.png'
