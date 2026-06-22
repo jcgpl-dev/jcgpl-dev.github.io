@@ -1,44 +1,45 @@
 
 import { initLoader, notifyModulesLoaded, notifyAssetsLoaded } from './loader.js';
 
-// 1. Kick off the visual terminal structure immediately
+
 initLoader();
 
-// 2. Triggered when HTML is fully parsed and DOM elements are ready
+
 document.addEventListener('DOMContentLoaded', () => {
   notifyModulesLoaded();
   monitorImageLoading();
 });
 
-// 3. Triggered when all global media, images, and embedded assets finish downloading
+
 window.addEventListener('load', () => {
   notifyAssetsLoaded();
 });
 
-//  Security Controls & Restrictive Shortcuts 
-document.addEventListener('contextmenu', (event) => {
-  event.preventDefault();
-});
+// ====sec====
+// document.addEventListener('contextmenu', (event) => {
+//   event.preventDefault();
+// });
 
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'F12') {
-    event.preventDefault();
-    return false;
-  }
-  if (
-    (event.ctrlKey || event.metaKey) &&
-    event.shiftKey &&
-    (event.key === 'I' || event.key === 'i' ||
-      event.key === 'J' || event.key === 'j' ||
-      event.key === 'C' || event.key === 'c')
-  ) {
-    event.preventDefault();
-    return false;
-  }
-  if ((event.ctrlKey || event.metaKey) && (event.key === 'U' || event.key === 'u')) {
-    event.preventDefault();
-  }
-});
+// document.addEventListener('keydown', (event) => {
+//   if (event.key === 'F12') {
+//     event.preventDefault();
+//     return false;
+//   }
+//   if (
+//     (event.ctrlKey || event.metaKey) &&
+//     event.shiftKey &&
+//     (event.key === 'I' || event.key === 'i' ||
+//       event.key === 'J' || event.key === 'j' ||
+//       event.key === 'C' || event.key === 'c')
+//   ) {
+//     event.preventDefault();
+//     return false;
+//   }
+//   if ((event.ctrlKey || event.metaKey) && (event.key === 'U' || event.key === 'u')) {
+//     event.preventDefault();
+//   }
+// });
+// ====sec====
 
 //  Image Tracker Framework 
 export function monitorImageLoading(container = document.body) {

@@ -120,9 +120,9 @@
   }
 
   /* Avatar smaller */
-  .avatar-frame {
-    width: 200px !important;
-    height: 200px !important;
+  .hero-bg-glow {
+    width: 400px;
+    height: 400px;
   }
 
   /* About stacks */
