@@ -417,6 +417,19 @@ export const projects = [
     liveUrl: 'https://drive.google.com/file/d/1qY517xcxQoaWD-Gcky_Yl61gXMAPXkCy/view?usp=drive_link',
   },
   {
+    title: 'SharpTube: Desktop Media Downloader',
+    description: 'An architectural-focused desktop application built with Flutter and the BLoC pattern. It delivers real-time asset extraction by bridging yt-dlp pipelines with high-fidelity performance metrics, custom OS-level native title bar bindings, a fully adaptive fluid sidebar layout, and an offline-first download tracking queue.',
+    image: 'assets/images/projects/yt-dl/cover.png',
+    images: [
+      // 1. App Startup & Authentication
+      'assets/images/projects/yt-dl/ss1.png',
+      'assets/images/projects/yt-dl/ss2.png',
+    ],
+    techStack: ['Flutter', 'Dart', 'BLoC', 'yt-dlp'],
+    githubUrl: 'https://github.com/jcgpl-dev/youtube_downloader',
+    liveUrl: 'https://drive.google.com/drive/folders/1gkqwAKRnJAejgW-3q_XKyofC3QfeQDm6?usp=drive_link',
+  },
+  {
     title: 'Tarpaulin Design',
     description: 'Designed Tarpaulin layouts using adobe photoshop.',
     image: 'assets/images/projects/graphics/tarp-design.png',
