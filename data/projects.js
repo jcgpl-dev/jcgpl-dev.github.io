@@ -419,11 +419,12 @@ export const projects = [
   {
     title: 'SharpTube: Desktop Media Downloader',
     description: 'An architectural-focused desktop application built with Flutter and the BLoC pattern. It delivers real-time asset extraction by bridging yt-dlp pipelines with high-fidelity performance metrics, custom OS-level native title bar bindings, a fully adaptive fluid sidebar layout, and an offline-first download tracking queue.',
-    image: 'assets/images/projects/yt-dl/cover-v2.png',
+    image: 'assets/images/projects/yt-dl/cover.png',
     images: [
       // 1. App Startup & Authentication
       'assets/images/projects/yt-dl/ss1.png',
       'assets/images/projects/yt-dl/ss2.png',
+      'assets/images/projects/yt-dl/ss3.png',
     ],
     techStack: ['Flutter', 'Dart', 'BLoC', 'yt-dlp'],
     githubUrl: 'https://github.com/jcgpl-dev/youtube_downloader',
