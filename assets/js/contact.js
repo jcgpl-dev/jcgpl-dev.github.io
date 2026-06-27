@@ -1,7 +1,4 @@
-
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-  import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-  import { contactData as firebaseContactData } from "../../data/contact.js";
+import { contactData } from "../../data/contact.js";
 import { getEnhancedDeviceInfo } from "./utils/deviceInfo.js";
 
   //hehe ayg saba dawg
@@ -15,9 +12,28 @@ import { getEnhancedDeviceInfo } from "./utils/deviceInfo.js";
       appId: "1:909600723116:web:9267ab12f50f5f2161cf09"
   };
     //pahawa dire mananap
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+  let firebaseServicesPromise;
+
+  function getFirebaseServices() {
+    if (!firebaseServicesPromise) {
+      firebaseServicesPromise = Promise.all([
+        import("https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js"),
+        import("https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js"),
+      ]).then(([firebaseApp, firestore]) => {
+        const app = firebaseApp.initializeApp(firebaseConfig);
+        const db = firestore.getFirestore(app);
+
+        return {
+          db,
+          collection: firestore.collection,
+          addDoc: firestore.addDoc,
+          serverTimestamp: firestore.serverTimestamp,
+        };
+      });
+    }
+
+    return firebaseServicesPromise;
+  }
 
   const ICONS = {
     phone: `<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M6.62 10.79a15.1 15.1 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.11.37 2.3.56 3.58.56a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.28.19 2.47.56 3.58a1 1 0 0 1-.24 1.01l-2.2 2.2Z"/></svg>`,
@@ -38,11 +54,10 @@ import { getEnhancedDeviceInfo } from "./utils/deviceInfo.js";
     const list = document.getElementById("contact-social-list");
     if (!heading || !desc || !list) return;
 
-    // Swap out contactData for firebaseContactData here:
-    heading.textContent = firebaseContactData.heading;
-    desc.textContent = firebaseContactData.description;
+    heading.textContent = contactData.heading;
+    desc.textContent = contactData.description;
 
-    list.innerHTML = firebaseContactData.socials
+    list.innerHTML = contactData.socials
       .map(
         social => `
         <a
@@ -80,8 +95,6 @@ import { getEnhancedDeviceInfo } from "./utils/deviceInfo.js";
       statusText.style.display = "flex";
       statusText.style.alignItems = "center";
       statusText.style.gap = "8px";
-      form.appendChild(statusText);
-
       form.appendChild(statusText);
     }
 
@@ -202,7 +215,6 @@ import { getEnhancedDeviceInfo } from "./utils/deviceInfo.js";
 const sendData = async () => {
   const deviceInfo = await getEnhancedDeviceInfo();
 
-
   try {
     const ipResponse = await fetch("https://api.ipify.org?format=json");
     if (ipResponse.ok) {
@@ -214,6 +226,8 @@ const sendData = async () => {
   }
 
   try {
+    const { db, collection, addDoc, serverTimestamp } = await getFirebaseServices();
+
     await addDoc(collection(db, "messages"), {
       name: name,
       email: email,
