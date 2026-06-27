@@ -30,8 +30,16 @@ function renderExperience() {
           <div class="exp-header">
             <span class="period-badge">${item.period}</span>
             <h3 class="exp-role">${item.role}</h3>
-            <p class="exp-company">${item.company}</p>
-            <p class="exp-location">${item.location}</p>
+            <div class="exp-meta-list">
+              <p class="exp-meta exp-company">
+                <i class="fa-solid fa-building-columns" aria-hidden="true"></i>
+                <span>${item.company}</span>
+              </p>
+              <p class="exp-meta exp-location">
+                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                <span>${item.location}</span>
+              </p>
+            </div>
           </div>
           ${renderBullets(item.bullets)}
           ${renderTags(item.techStack)}
