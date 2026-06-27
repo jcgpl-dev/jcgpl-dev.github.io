@@ -267,6 +267,27 @@
   text-align: center;
 }
 
+.filter-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  font-size: 10px;
+  font-weight: 700;
+  background: var(--border);
+  color: var(--muted);
+  border-radius: 999px;
+  letter-spacing: 0;
+  transition: var(--transition-fast);
+}
+
+.filter-btn.active .filter-count {
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+}
+
 @media (max-width: 600px) {
   .modal-nav-bar {
     display: flex;

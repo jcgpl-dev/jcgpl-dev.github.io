@@ -90,7 +90,12 @@ function renderFilterBar() {
   const section = document.getElementById('projects-grid')?.parentElement;
   if (!section) return;
 
-  // Collect unique categories from data
+  const categoryCounts = projects.reduce((acc, p) => {
+    const cat = p.category;
+    if (cat) acc[cat] = (acc[cat] || 0) + 1;
+    return acc;
+  }, {});
+
   const categories = ['All', ...new Set(projects.map(p => p.category).filter(Boolean))];
 
   const bar = document.createElement('div');
@@ -98,9 +103,12 @@ function renderFilterBar() {
   bar.setAttribute('role', 'group');
   bar.setAttribute('aria-label', 'Filter projects by category');
 
-  bar.innerHTML = categories.map((cat, i) =>
-    `<button class="filter-btn${i === 0 ? ' active' : ''}" data-filter="${cat}">${cat}</button>`
-  ).join('');
+  bar.innerHTML = categories.map((cat, i) => {
+    const count = cat === 'All' ? projects.length : (categoryCounts[cat] || 0);
+return `<button class="filter-btn${i === 0 ? ' active' : ''}" data-filter="${cat}">
+  ${cat} (${count})
+</button>`;
+  }).join('');
 
   const grid = document.getElementById('projects-grid');
   section.insertBefore(bar, grid);
