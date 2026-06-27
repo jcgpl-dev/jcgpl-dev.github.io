@@ -168,6 +168,7 @@ export const projects = [
     caseStudy: cvmsCaseStudy,
     githubUrl: null,
     liveUrl: null,
+    category: 'Flutter',
   },
   {
     title: 'Cloud-based Vehicle Monitoring System - Mobile App',
@@ -195,6 +196,7 @@ export const projects = [
     caseStudy: cvmsCaseStudy,
     githubUrl: null,
     liveUrl: null,
+    category: 'Flutter',
   },
   {
     title: 'JRMSU CCS Dean\'s Office Visitors Log System - Mobile App',
@@ -217,6 +219,7 @@ export const projects = [
     techStack: ['Flutter', 'Dart', 'Firebase'],
     githubUrl: null,
     liveUrl: null,
+    category: 'Flutter',
   },
   {
     title: 'JRMSU CCS Dean\'s Office Visitors Log System - Desktop App',
@@ -247,6 +250,7 @@ export const projects = [
     techStack: ['Flutter', 'Dart', 'Firebase'],
     githubUrl: null,
     liveUrl: null,
+    category: 'Flutter',
   },
   {
     title: 'Gapz Graphics Portfolio Website',
@@ -262,6 +266,7 @@ export const projects = [
     techStack: ['HTML', 'CSS', 'JavaScript'],
     githubUrl: null,
     liveUrl: 'https://jesiegapol23.github.io/gapzgraphix',
+    category: 'Web',
   },
   {
     title: 'Records Management System - Desktop App',
@@ -289,6 +294,7 @@ export const projects = [
     techStack: ['Flutter', 'Dart', 'SQLite'],
     githubUrl: null,
     liveUrl: null,
+    category: 'Flutter',
   },
 
   {
@@ -323,6 +329,7 @@ export const projects = [
     techStack: ['Flutter', 'Dart', 'Firebase'],
     githubUrl: null,
     liveUrl: null,
+    category: 'Flutter',
   },
 
   {
@@ -375,6 +382,7 @@ export const projects = [
     techStack: ['Kotlin', 'XML', 'Firebase'],
     githubUrl: 'https://github.com/jcgpl-dev/StoreMate',
     liveUrl: null,
+    category: 'Mobile',
   },
   {
     title: 'Peso Path - Budgeting App',
@@ -415,6 +423,7 @@ export const projects = [
     techStack: ['Flutter', 'Dart', 'SQLite'],
     githubUrl: 'https://github.com/jcgpl-dev/peso_path',
     liveUrl: 'https://drive.google.com/file/d/1qY517xcxQoaWD-Gcky_Yl61gXMAPXkCy/view?usp=drive_link',
+    category: 'Flutter',
   },
   {
     title: 'SharpTube: Desktop Media Downloader',
@@ -429,6 +438,7 @@ export const projects = [
     techStack: ['Flutter', 'Dart', 'BLoC', 'yt-dlp'],
     githubUrl: 'https://github.com/jcgpl-dev/youtube_downloader',
     liveUrl: 'https://drive.google.com/drive/folders/1gkqwAKRnJAejgW-3q_XKyofC3QfeQDm6?usp=drive_link',
+    category: 'Flutter',
   },
   {
     title: 'Tarpaulin Design',
@@ -441,6 +451,7 @@ export const projects = [
     techStack: ['Adobe Photoshop'],
     githubUrl: null,
     liveUrl: null,
+    category: 'Graphics',
   },
   // {
   //   title:       'JRMSU K Sports Fest 2026 — CCS Basketball Jersey Design',
@@ -467,6 +478,7 @@ export const projects = [
     techStack: ['Adobe Photoshop', 'Adobe Illustrator'],
     githubUrl: null,
     liveUrl: null,
+    category: 'Graphics',
   },
   {
     title: 'Storemate Figma Design',
@@ -478,6 +490,7 @@ export const projects = [
     techStack: ['Figma'],
     githubUrl: null,
     liveUrl: null,
+    category: 'Design',
   },
   {
     title: 'CVMS Figma Design',
@@ -489,5 +502,6 @@ export const projects = [
     techStack: ['Figma'],
     githubUrl: null,
     liveUrl: null,
+    category: 'Design',
   },
 ];

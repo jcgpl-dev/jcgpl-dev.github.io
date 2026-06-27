@@ -48,9 +48,6 @@
   color: var(--accent);
 }
 
-.project-view-btn:active {
-}
-
 .project-view-btn svg {
   width: 18px;
   height: 18px;
@@ -171,4 +168,111 @@
   width: 100%;
   height: auto;
   object-fit: contain;
+}
+
+/* ── Filter bar ─────────────────────────────────────────────── */
+.projects-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.filter-btn {
+  padding: 6px 16px;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  font-family: var(--font);
+  letter-spacing: 0.3px;
+  background: var(--surface);
+  color: var(--muted);
+  border: 1.5px solid var(--border);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.filter-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.filter-btn.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.modal-nav-btn--prev,
+.modal-nav-btn--next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--foreground);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  z-index: 10;
+}
+
+.modal-nav-btn--prev {
+  left: 12px;
+}
+.modal-nav-btn--next {
+  right: 12px;
+}
+
+.modal-nav-btn--prev:hover:not(:disabled),
+.modal-nav-btn--next:hover:not(:disabled) {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.modal-nav-btn--prev:disabled,
+.modal-nav-btn--next:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.modal-counter {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.4px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 4px 10px;
+  pointer-events: none;
+  margin-top: 0;
+}
+
+.modal-nav-bar {
+  display: none;
+}
+
+.modal-counter-mirror {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.4px;
+  min-width: 48px;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .modal-nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 10px 0 4px;
+  }
 }

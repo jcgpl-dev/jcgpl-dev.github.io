@@ -86,6 +86,42 @@ function escapeHtml(value = "") {
     .replaceAll("'", "&#039;");
 }
 
+function renderFilterBar() {
+  const section = document.getElementById('projects-grid')?.parentElement;
+  if (!section) return;
+
+  // Collect unique categories from data
+  const categories = ['All', ...new Set(projects.map(p => p.category).filter(Boolean))];
+
+  const bar = document.createElement('div');
+  bar.className = 'projects-filter-bar';
+  bar.setAttribute('role', 'group');
+  bar.setAttribute('aria-label', 'Filter projects by category');
+
+  bar.innerHTML = categories.map((cat, i) =>
+    `<button class="filter-btn${i === 0 ? ' active' : ''}" data-filter="${cat}">${cat}</button>`
+  ).join('');
+
+  const grid = document.getElementById('projects-grid');
+  section.insertBefore(bar, grid);
+
+  bar.addEventListener('click', e => {
+    const btn = e.target.closest('.filter-btn');
+    if (!btn) return;
+
+    bar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('.project-card').forEach(card => {
+      const index = Number(card.querySelector('[data-project-index]')?.dataset.projectIndex);
+      const project = projects[index];
+      const match = filter === 'All' || project?.category === filter;
+      card.style.display = match ? '' : 'none';
+    });
+  });
+}
+
 function renderProjects() {
   const grid = document.getElementById("projects-grid");
   if (!grid) return;
@@ -381,15 +417,18 @@ const renderCodeSnippet = codeSnippet => {
     modalActions.hidden = !modalActions.innerHTML.trim();
   };
 
-  const updateNavState = () => {
-    const hasMultiple = activeImages.length > 1;
-    prevBtn.disabled = !hasMultiple;
-    nextBtn.disabled = !hasMultiple;
-    modalCounter.textContent = activeImages.length
-      ? `${activeIndex + 1} / ${activeImages.length}`
-      : "0 / 0";
-  };
+ const updateNavState = () => {
+  const hasMultiple = activeImages.length > 1;
+  prevBtn.disabled = !hasMultiple;
+  nextBtn.disabled = !hasMultiple;
+  const counterText = activeImages.length
+    ? `${activeIndex + 1} / ${activeImages.length}`
+    : "0 / 0";
+  modalCounter.textContent = counterText;
 
+  const mirror = document.getElementById('project-modal-counter-mirror');
+  if (mirror) mirror.textContent = counterText;
+};
   const animateImageChange = direction => {
     modalImage.classList.remove("is-animating", "from-next", "from-prev");
     void modalImage.offsetWidth;
@@ -481,9 +520,16 @@ const renderCodeSnippet = codeSnippet => {
     });
   });
 
-  prevBtn.addEventListener("click", goPrev);
-  nextBtn.addEventListener("click", goNext);
-  closeBtn.addEventListener("click", closeModal);
+prevBtn.addEventListener("click", goPrev);
+nextBtn.addEventListener("click", goNext);
+
+// mobile nav bar buttons
+const prevBtnMobile = document.getElementById("project-modal-prev-mobile");
+const nextBtnMobile = document.getElementById("project-modal-next-mobile");
+if (prevBtnMobile) prevBtnMobile.addEventListener("click", goPrev);
+if (nextBtnMobile) nextBtnMobile.addEventListener("click", goNext);
+
+closeBtn.addEventListener("click", closeModal);
 
   modal.addEventListener("click", e => {
     if (e.target === modal) closeModal();
@@ -497,5 +543,8 @@ const renderCodeSnippet = codeSnippet => {
   });
 }
 
+
+
 renderProjects();
+renderFilterBar(); 
 setupProjectModal();

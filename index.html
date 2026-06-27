@@ -183,23 +183,6 @@
                   </span>
                 </a>
               </div>
-
-              <!-- <div class="hero-stats fade-up fade-up-5">
-                <div class="hero-stat">
-                  <span class="hero-stat-num">3+</span>
-                  <span class="hero-stat-label">projects shipped</span>
-                </div>
-                <div class="hero-stat-divider"></div>
-                <div class="hero-stat">
-                  <span class="hero-stat-num">Flutter</span>
-                  <span class="hero-stat-label">main stack</span>
-                </div>
-                <div class="hero-stat-divider"></div>
-                <div class="hero-stat">
-                  <span class="hero-stat-num">∞</span>
-                  <span class="hero-stat-label">debugPrint() calls</span>
-                </div>
-              </div> -->
             </div>
 
             <!-- RIGHT IMAGE -->
@@ -212,6 +195,31 @@
                   alt="Jesie Gapol"
                   class="hero-portrait"
                 />
+              </div>
+
+              <!-- Floating stat cards -->
+              <div
+                class="hero-float-card hero-float-card--tl fade-up fade-up-4"
+                aria-hidden="true"
+              >
+                <span class="hero-float-num">10+</span>
+                <span class="hero-float-label">Projects</span>
+              </div>
+
+              <div
+                class="hero-float-card hero-float-card--tr fade-up fade-up-5"
+                aria-hidden="true"
+              >
+                <span class="hero-float-num">Flutter</span>
+                <span class="hero-float-label">Main Stack</span>
+              </div>
+
+              <div
+                class="hero-float-card hero-float-card--bl fade-up fade-up-5"
+                aria-hidden="true"
+              >
+                <span class="hero-float-num hero-float-num--symbol">∞</span>
+                <span class="hero-float-label">debugPrint() calls</span>
               </div>
             </div>
           </div>
@@ -394,51 +402,89 @@
                 class="modal-case-gallery"
                 aria-label="Project screenshots"
               >
-                <div class="modal-gallery-header">
-                  <div class="modal-toolbar">
-                    <button
-                      type="button"
-                      class="modal-nav-btn"
-                      id="project-modal-prev"
-                      aria-label="Previous image"
-                    >
-                      <svg
-                        viewBox="0 0 24 24"
-                        width="18"
-                        height="18"
-                        aria-hidden="true"
-                      >
-                        <path
-                          fill="currentColor"
-                          d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"
-                        />
-                      </svg>
-                    </button>
-                    <p class="modal-counter" id="project-modal-counter">
-                      1 / 1
-                    </p>
-                    <button
-                      type="button"
-                      class="modal-nav-btn"
-                      id="project-modal-next"
-                      aria-label="Next image"
-                    >
-                      <svg
-                        viewBox="0 0 24 24"
-                        width="18"
-                        height="18"
-                        aria-hidden="true"
-                      >
-                        <path
-                          fill="currentColor"
-                          d="m8.59 16.59 1.41 1.41 6-6-6-6-1.41 1.41L13.17 12z"
-                        />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
                 <div class="modal-media-wrap">
+                  <button
+                    type="button"
+                    class="modal-nav-btn modal-nav-btn--prev"
+                    id="project-modal-prev"
+                    aria-label="Previous image"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      width="20"
+                      height="20"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"
+                      />
+                    </svg>
+                  </button>
                   <img id="project-modal-image" alt="" loading="lazy" />
+                  <button
+                    type="button"
+                    class="modal-nav-btn modal-nav-btn--next"
+                    id="project-modal-next"
+                    aria-label="Next image"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      width="20"
+                      height="20"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="m8.59 16.59 1.41 1.41 6-6-6-6-1.41 1.41L13.17 12z"
+                      />
+                    </svg>
+                  </button>
+                  <p class="modal-counter" id="project-modal-counter">1 / 1</p>
+                </div>
+
+                <div class="modal-nav-bar">
+                  <button
+                    type="button"
+                    class="modal-nav-btn"
+                    id="project-modal-prev-mobile"
+                    aria-label="Previous image"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      width="20"
+                      height="20"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"
+                      />
+                    </svg>
+                  </button>
+                  <span
+                    class="modal-counter-mirror"
+                    id="project-modal-counter-mirror"
+                    >1 / 1</span
+                  >
+                  <button
+                    type="button"
+                    class="modal-nav-btn"
+                    id="project-modal-next-mobile"
+                    aria-label="Next image"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      width="20"
+                      height="20"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="m8.59 16.59 1.41 1.41 6-6-6-6-1.41 1.41L13.17 12z"
+                      />
+                    </svg>
+                  </button>
                 </div>
               </section>
             </div>
