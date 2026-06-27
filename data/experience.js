@@ -1,7 +1,7 @@
 export const experience = [
   {
     role: "On-Job-Training (OJT) ",
-    company: "Jose Rizal Memorial State University - Katipunan Campus",
+    company: "JRMSU - Katipunan Campus",
     period: "Jun 2025 - Aug 2025",
     location: "Katipunan, Philippines",
     image: "assets/images/experiences/practicum/practicum1.jpg",
