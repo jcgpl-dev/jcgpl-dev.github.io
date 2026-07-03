@@ -1,7 +1,7 @@
 export const profile = {
   name:     'Jesie P. Gapol',
   tagline:  ['FLUTTER DEVELOPER', 'GRAPHIC ARTIST'],
-  bio:      `I'm a <strong>Computer Science student</strong> specialising in
+  bio:      `I'm a <strong>Computer Science graduate</strong> specialising in
              <strong>Flutter cross-platform development</strong> and
              <strong>Firebase backend integration</strong>.<br><br>
              I build production-ready mobile and web applications from real-time
